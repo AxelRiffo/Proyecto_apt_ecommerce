@@ -1,0 +1,41 @@
+body {
+    background-image: url('/static/img/background.jpg'); /* Establece la imagen de fondo */
+    background-repeat: repeat; /* Repetir en ambos ejes */
+    background-size: 10%; /* Reducir al 10% del tamaño original */
+}
+
+/* Estilo para la barra de navegación */
+#navbar {
+    background-color: #ffffff; /* Color de fondo del navbar */
+    padding: 10px; /* Ajusta según sea necesario */
+    margin: 2em;
+    display: flex; /* Usa flexbox para centrar en el eje vertical */
+    align-items: center; /* Alinea verticalmente */
+}
+
+#navbar button {
+    margin: 5px; /* Espacio entre los botones */
+    padding: 10px 20px; /* Espaciado interno (arriba/abajo, izquierda/derecha) */
+    font-size: 16px; /* Tamaño de fuente */
+    border: none; /* Sin bordes */
+    cursor: pointer;
+}
+
+#navbar button:hover {
+    background-color: #ddd; /* Cambio de color al pasar el ratón por encima */
+}
+
+.logo {
+    width: 100px; /* Ancho de la imagen del logo */
+    height: 100px; /* Alto de la imagen del logo */
+    margin-right: 10px; /* Espacio entre la imagen del logo y los botones */
+    border-radius: 50%; /* Hace el logo redondo */
+}
+
+#container {
+    background-color: white; /* Color de fondo blanco */
+    padding: 20px; /* Ajusta según sea necesario */
+    margin-top: 2em; /* Margen superior de 2em */
+    margin-left: 6em; /* Margen izquierdo de 6em */
+    margin-right: 6em; /* Margen derecho de 6em */
+}
