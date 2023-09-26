@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-    <head>
-        <title>GioPizza</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    </head>
-    <body>
-        <div id='navbar'>
+<head>
+    <title>GioPizza</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div id='navbar'>
+        <div class="navbar-left">
             <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo">
-            <button>Botón 1</button>
-            <button>Botón 2</button>
-            <button>Botón 3</button>
+            <button class="nav-button">Menú</button>
+            <button class="nav-button">Promociones</button>
+            <button class="nav-button">Acerca de nosotros</button>
         </div>
+        <div class="navbar-right">
+            <button class="nav-button nav-button-login">Ingresar</button>
+            <button class="nav-button nav-button-register">Registrarse</button>
+        </div>
+    </div>
 
-        <div id='container'>
-            {% block content %}
-            {% endblock content %}
-        </div>
+    <div id='container'>
+        {% block content %}
+        {% endblock content %}
+    </div>
 
-        <div class="footer">
-            a
-        </div>
-    </body>
+    <div class="footer">
+            <div class="footer-column">
+                <img src="{% static 'img/logo.png' %}" alt="Logo" class="footer-logo">
+            </div>
+            <div class="footer-column">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </p>
+            </div>
+            <div class="footer-column">
+                <div class="footer-btn">
+                    <span>Trabaja con nosotros</span>
+                    <span>Contactanos</span>
+                </div>
+            </div>
+    </div>
+</body>
 </html>

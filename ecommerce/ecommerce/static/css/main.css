@@ -1,59 +1,89 @@
-/* Establece la imagen de fondo */
 body {
     background-image: url('/static/img/background.jpg');
-    background-repeat: repeat; /* Repetir en ambos ejes */
-    background-size: 10%; /* Reducir al 10% del tamaño original */
-    display: flex; /* Utiliza flexbox para organizar el contenido */
-    flex-direction: column; /* Columna principal, para que el footer quede al final */
-    min-height: 100vh; /* Establece al menos el 100% de la altura de la ventana */
-    margin: 0; /* Elimina márgenes predeterminados */
+    background-repeat: repeat;
+    background-size: 10%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 /* Estilo para la barra de navegación */
 #navbar {
-    background-color: #ffffff; /* Color de fondo del navbar */
+    background-color: #ffffff;
     padding: 10px;
-    margin: 2em; /* Margen superior de 2em y elimina los márgenes en otras direcciones */
-    display: flex; /* Usa flexbox para centrar en el eje vertical */
-    align-items: center; /* Alinea verticalmente */
+    margin: 2em;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Estilo para los botones del navbar */
-#navbar button {
-    margin: 5px; /* Espacio entre los botones */
-    padding: 10px 20px; /* Espaciado interno (arriba/abajo, izquierda/derecha) */
-    font-size: 16px; /* Tamaño de fuente */
-    border: none; /* Sin bordes */
+.nav-button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
     cursor: pointer;
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+/* Estilo para el último botón de ingreso y registrarse */
+.nav-button-login,
+.nav-button-register {
+    background-color: #c5e09b;
 }
 
 /* Cambio de color al pasar el ratón por encima de los botones */
-#navbar button:hover {
-    background-color: #ddd;
+.nav-button:hover {
+    background-color: #aaa;
 }
 
-/* Estilo para el logo en el navbar */
-.logo {
-    width: 100px; /* Ancho de la imagen del logo */
-    height: 100px; /* Alto de la imagen del logo */
-    margin-right: 10px; /* Espacio entre la imagen del logo y los botones */
-    border-radius: 50%; /* Hace el logo redondo */
+.logo, .footer-logo{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    border-radius: 50%;
 }
 
-/* Estilo para el contenedor principal */
 #container {
-    background-color: rgba(255, 255, 255, 0.75); /* Color de fondo blanco */
-    padding: 20px; /* Espaciado interno */
-    margin-left: 6em; /* Margen izquierdo de 6em */
-    margin-right: 6em; /* Margen derecho de 6em */
-    flex: 1; /* Hace que ocupe el espacio restante en la vertical */
+    background-color: white;
+    padding: 20px;
+    margin-left: 6em;
+    margin-right: 6em;
+    flex: 1;
 }
 
-/* Estilo para el footer */
 .footer {
-    background-color: #541111; /* Color de fondo del footer */
-    color: white; /* Color del texto */
-    padding: 50px; /* Espaciado interno */
-    width: 100%; /* Ancho completo */
+    background-color: #7b1506;
+    color: white;
     margin-top: 2em;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    display: flex; /* Usar flexbox */
+    flex-direction: row; /* Cambiar la dirección de flexión a fila (en lugar de columna) */
+}
+
+.footer-column {
+    width: 30%;
+}
+
+.footer-btn {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nuevos estilos para la alineación de botones en el navbar */
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
 }
