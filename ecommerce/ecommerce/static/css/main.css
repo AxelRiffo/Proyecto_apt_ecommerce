@@ -8,6 +8,7 @@ body {
     margin: 0;
 }
 
+
 /* Estilo para la barra de navegación */
 #navbar {
     background-color: #ffffff;
@@ -44,9 +45,6 @@ body {
     border-radius: 5px;
 }
 
-.navbar-left {
-
-}
 
 /* Estilo para el último botón de ingreso y registrarse */
 .nav-button-login,
@@ -112,3 +110,65 @@ footer {
 .footer-section p {
     margin: 0;
 }
+
+/*Responsive*/
+@media screen and (max-width: 850px){
+    main {
+         margin-top: 50px;
+    }
+}
+
+.carousel-container {
+    position: relative;
+    display: inline-block;
+    text-align: center; /* Centra el contenido horizontalmente */
+}
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-slide img {
+    max-width: 100%;
+    height: auto;
+    animation: carousel 5s infinite;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Estilo para los botones de anterior y siguiente */
+#prev, #next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+#prev {
+    left: 0; /* Alinea el botón de "Anterior" a la izquierda */
+}
+
+#next {
+    right: 0; /* Alinea el botón de "Siguiente" a la derecha */
+}
+
+#prev:hover,
+#next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-wrapper {
+    text-align: center; }
