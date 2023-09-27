@@ -55,7 +55,7 @@ body {
     flex: 1;
 }
 
-.footer {
+footer {
     background-color: #7b1506;
     color: white;
     margin-top: 2em;
@@ -66,23 +66,31 @@ body {
     flex-direction: row; /* Cambiar la dirección de flexión a fila (en lugar de columna) */
 }
 
-.footer-column {
-    width: 30%;
+.footer-section {
+    text-align: center;
+    flex: 1;
 }
 
-.footer-btn {
-    display: flex;
-    flex-direction: column;
+.footer-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
-/* Nuevos estilos para la alineación de botones en el navbar */
-.navbar-left {
-    display: flex;
-    align-items: center;
+.footer-section ul {
+    list-style: none;
+    padding: 0;
 }
 
-.navbar-right {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
+.footer-section ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section p {
+    margin: 0;
 }
