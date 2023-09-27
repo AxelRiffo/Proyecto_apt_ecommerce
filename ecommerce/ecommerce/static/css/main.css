@@ -158,11 +158,11 @@ button {
 }
 
 #prev {
-    left: 0; /* Alinea el botón de "Anterior" a la izquierda */
+    left: 350px; /* Alinea el botón de "Anterior" a la izquierda */
 }
 
 #next {
-    right: 0; /* Alinea el botón de "Siguiente" a la derecha */
+    right: 350px; /* Alinea el botón de "Siguiente" a la derecha */
 }
 
 #prev:hover,
