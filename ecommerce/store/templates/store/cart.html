@@ -4,5 +4,12 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 <h3>cart</h3>
+<!-- lista_productos.html -->
+{% for producto in productos %}
+<h2>{{ producto.titulo }}</h2>
+<p>Precio: ${{ producto.precio }}</p>
+<p>{{ producto.descripcion }}</p>
+<img src="{{ producto.imagen.url }}" alt="{{ producto.titulo }}">
+{% endfor %}
 
 {% endblock %}

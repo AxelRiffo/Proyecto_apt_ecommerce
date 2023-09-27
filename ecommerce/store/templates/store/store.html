@@ -23,6 +23,14 @@
     </div>
 </div>
 
+<!-- store/store.html -->
+{% for producto in productos %}
+<h2>{{ producto.titulo }}</h2>
+<p>Precio: ${{ producto.precio }}</p>
+<p>{{ producto.descripcion }}</p>
+<img src="{{ producto.imagen.url }}" alt="{{ producto.titulo }}">
+{% endfor %}
+
 <script src="{% static 'carousel.js' %}"></script>
 <script src="{% static 'js/carousel.js' %}"></script>
 
