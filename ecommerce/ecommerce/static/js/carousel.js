@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function showSlide(index) {
         slides.forEach((slide, i) => {
             if (i === index) {
-                slide.style.display = 'block';
+                slide.classList.add('active');
             } else {
-                slide.style.display = 'none';
+                slide.classList.remove('active');
             }
         });
     }
@@ -31,10 +31,5 @@ document.addEventListener('DOMContentLoaded', function () {
         showSlide(currentIndex);
     });
 
-    // Activar el desplazamiento automático cada 5 segundos
     setInterval(autoSlide, 5000);
 });
-
-function autoSlide() {
-    document.getElementById('next').click();
-}

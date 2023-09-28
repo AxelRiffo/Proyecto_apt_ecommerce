@@ -10,7 +10,16 @@
     position: relative;
     display: inline-block;
     text-align: center; /* Centra el contenido horizontalmente */
-    
+}
+
+.carousel-slide {
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide.active {
+    display: block;
+    opacity: 1;
 }
 
 .nav-button:hover {
@@ -20,14 +29,9 @@
 .carousel-slide img {
     max-width: 100%;
     height: auto;
-    animation: carousel 5s infinite;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Agrega sombra al carrusel */
-    border: 2px solid yellow; /* Agrega un borde amarillo neon al carrusel */
-    border-radius: 10px; /* Ajusta el radio del borde si deseas bordes redondeados */
-}
-
-img {
-    max-width: 100%;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid yellow;
+    border-radius: 10px;
 }
 
 button {
@@ -35,7 +39,6 @@ button {
     margin-top: 10px;
 }
 
-/* Estilo para los botones de anterior y siguiente */
 #prev, #next {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -51,17 +54,14 @@ button {
 }
 
 #prev {
-    left: 350px; /* Alinea el botón de "Anterior" a la izquierda */
+    left: 350px;
 }
 
 #next {
-    right: 350px; /* Alinea el botón de "Siguiente" a la derecha */
+    right: 350px;
 }
 
 #prev:hover,
 #next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
-.carousel-wrapper {
-    text-align: center; }
