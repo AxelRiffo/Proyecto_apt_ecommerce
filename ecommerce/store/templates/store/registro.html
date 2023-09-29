@@ -1,0 +1,24 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <div style="float: left; width: 50%;">
+        <h2>Iniciar Sesión</h2>
+        <form method="post" action="{% url 'iniciar_sesion' %}">
+            {% csrf_token %}
+            {{ form.username.label_tag }} {{ form.username }} <br>
+            {{ form.password.label_tag }} {{ form.password }} <br>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+
+    <div style="float: right; width: 50%;">
+        <h2>Registro</h2>
+        <form method="post" action="{% url 'registro' %}">
+            {% csrf_token %}
+            {{ form.username.label_tag }} {{ form.username }} <br>
+            {{ form.password.label_tag }} {{ form.password }} <br>
+            {{ form.confirm_password.label_tag }} {{ form.confirm_password }} <br>
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+{% endblock %}

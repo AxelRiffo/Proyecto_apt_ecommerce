@@ -1,0 +1,13 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <div style="float: left; width: 50%;">
+        <h2>Iniciar Sesión</h2>
+        <form method="post" action="{% url 'iniciar_sesion' %}">
+            {% csrf_token %}
+            {{ form.username.label_tag }} {{ form.username }} <br>
+            {{ form.password.label_tag }} {{ form.password }} <br>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+{% endblock %}
