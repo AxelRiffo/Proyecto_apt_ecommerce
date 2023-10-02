@@ -1,0 +1,23 @@
+.body {
+    background-color: rgba(255, 255, 255, 0.80);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    border-radius: 20px;
+}
+
+.columns {
+    margin: 5em;
+}
+
+.column1 {
+    width: 50%; /* Ancho de la primera columna */
+    float: left; /* Posiciona la columna a la izquierda */
+}
+
+/* Estilo para la clase de la columna 2 */
+.column2 {
+    width: 50%; /* Ancho de la segunda columna */
+    float: right; /* Posiciona la columna a la derecha */
+}
