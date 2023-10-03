@@ -29,9 +29,10 @@
 }
 
 .carousel-slide img {
-    max-width: calc(100% - 2em); /* Resta 2em de los lados para mantener el espacio deseado */
-    height: auto;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    width: calc(100% - 2em); /* Estira la imagen hacia los lados y deja 1em de espacio a cada lado */
+    height: auto; /* Mantiene la proporción de altura original */
+    margin-left: 1em; /* Espacio a la izquierda */
+    margin-right: 1em; /* Espacio a la derecha */
     border: 2px solid yellow;
     border-radius: 10px;
 }
