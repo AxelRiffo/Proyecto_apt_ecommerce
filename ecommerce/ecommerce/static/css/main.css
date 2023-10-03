@@ -46,7 +46,7 @@ body {
 }
 
 /* Estilo para los botones del navbar */
-.nav-button {
+.nav-button-l {
     margin: 5px;
     padding: 10px 20px;
     font-size: 16px;
@@ -57,14 +57,30 @@ body {
 }
 
 
-/* Estilo para el último botón de ingreso y registrarse */
-.nav-button-login,
-.nav-button-register {
-    background-color: #c5e09b;
+/* Estilo para el último botón de ingreso */
+.nav-button-login {
+    background-color: #34db63; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px;
+    color: #fff; /* Color del texto */
+    cursor: pointer; /* Cursor predeterminado */
+    padding: 15px 25px; /* Relleno del botón */
+    margin-right: 15px;
+    font-size: 16px; /* Tamaño de fuente */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como bloque en línea */
+}
+
+.nav-button-login:hover {
+    background-color: #29b989; /* Cambio de color al pasar el ratón */
+}
+
+.nav-button-login:active {
+    background-color: #1abc9c; /* Cambio de color al hacer clic */
 }
 
 /* Cambio de color al pasar el ratón por encima de los botones */
-.nav-button:hover {
+.nav-button-l:hover {
     background-color: #aaa;
 }
 
