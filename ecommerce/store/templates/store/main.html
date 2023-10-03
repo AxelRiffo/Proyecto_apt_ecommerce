@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
-    <link rel="stylesheet" href="URL_DE_TU_FUENTE">
+    
 </head>
 <body>
     <div id='navbar'>
@@ -26,33 +26,36 @@
     </div>
 
     <footer>
-        <div class="footer-section">
-            <h4>GioPizza</h4>
-            <ul>
-                <li><a href="#">Pizzas</a></li>
-                <li><a href="#">Acerca de nosotros</a></li>
-            </ul>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>GioPizza</h4>
+                <ul>
+                    <li><a href="#">Pizzas</a></li>
+                    <li><a href="#">Acerca de nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Dirección</h4>
+                <p>Dirección del local*</p>
+            </div>
+            <div class="footer-section">
+                <h4>Redes Sociales</h4>
+                <li><a href="https://www.instagram.com/gio_pizzeria_al_forno/">Instagram</a></li>
+            </div>
         </div>
-        <div class="footer-section">
-            <h4>Ayuda</h4>
-            <ul>
-                <li><a href="#">Preguntas frecuentes</a></li>
-                <li><a href="#">Contacto</a></li>
-               
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Dirección</h4>
-            <p>Dirección del local*</p>
-        </div>
-        <div class="footer-section">
-            <h4>Redes Sociales</h4>
-            <li><a href="https://www.instagram.com/gio_pizzeria_al_forno/">Instagram</a></li>
+        <div class="copyright">
+            <p>© 2023 GioPizza</p>
         </div>
     </footer>
+
     
-    
-    
-    <script src="script.js"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
 </body>
 </html>

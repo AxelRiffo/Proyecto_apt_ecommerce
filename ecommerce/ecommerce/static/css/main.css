@@ -9,6 +9,8 @@ body {
     font-family: 'Gabarito', monospace;
 }
 
+
+
 @font-face {
     font-family: 'Gabarito';
     src: url('/static/font/Gabarito-VariableFont_wght.ttf') format('truetype');
@@ -91,15 +93,30 @@ footer {
     flex-direction: row; /* Cambiar la dirección de flexión a fila (en lugar de columna) */
 }
 
-.footer-section {
-    text-align: center;
-    flex: 1;
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px; /* Ajusta el ancho máximo según tu diseño */
+    margin-bottom: 20px; /* Espacio entre las secciones y el copyright */
 }
 
-.footer-section h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+.footer-section {
+    flex: 1;
+    margin: 0 10px; /* Espacio horizontal entre las secciones */
 }
+/* Estilo para el div de copyright */
+
+.copyright {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    color: #fff;
+    padding: 5px 10px;
+}
+
 
 .footer-section ul {
     list-style: none;
