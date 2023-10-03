@@ -109,10 +109,9 @@ footer {
 /* Estilo para el div de copyright */
 
 .copyright {
-    position: absolute;
+    
     bottom: 0;
     right: 0;
-    
     color: #fff;
     padding: 5px 10px;
 }
