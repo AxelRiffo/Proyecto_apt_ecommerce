@@ -1,3 +1,4 @@
+# store/forms.py
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
@@ -5,12 +6,17 @@ from django.core.exceptions import ValidationError
 import re
 
 class RegistroForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput, label='Confirmar Contraseña')
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'confirm_password']
+        fields = ['username', 'email', 'password', 'confirm_password']
+        labels = {
+            'username': 'Nombre de usuario',
+            'email': 'Correo Electrónico',
+            'password': 'Contraseña',
+            'confirm_password': 'Confirmar Contraseña',
+        }
 
     def clean(self):
         cleaned_data = super().clean()
@@ -32,3 +38,4 @@ class RegistroForm(forms.ModelForm):
 
 class InicioSesionForm(AuthenticationForm):
     username = forms.EmailField(label='Correo Electrónico')
+    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)

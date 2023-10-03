@@ -3,14 +3,28 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css' %}">
 
-    <div class="body">
-        <div class="columns">
-            <div class="column1">
-                ACA IRA EL REGISTRO DE USUARIO
-            </div>
-            <div class="column2">
-                ACA IRA EL INICIO DE SESION
-            </div>
+<div class="body">
+    <div class="columns">
+        <div class="column1">
+            <h2>Registro</h2>
+            <form method="post" action="{% url 'ingreso' %}">
+                {% csrf_token %}
+                {{ registro_form.username.label_tag }} {{ registro_form.username }} <br>
+                {{ registro_form.email.label_tag }} {{ registro_form.email }} <br>
+                {{ registro_form.password.label_tag }} {{ registro_form.password }} <br>
+                {{ registro_form.confirm_password.label_tag }} {{ registro_form.confirm_password }} <br>
+                <button type="submit">Registrarse</button>
+            </form>            
+        </div>
+        <div class="column2">
+            <h2>Iniciar Sesión</h2>
+            <form method="post" action="{% url 'ingreso' %}">
+                {% csrf_token %}
+                {{ inicio_sesion_form.username.label_tag }} {{ inicio_sesion_form.username }} <br>
+                {{ inicio_sesion_form.password.label_tag }} {{ inicio_sesion_form.password }} <br>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}
