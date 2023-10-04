@@ -7,35 +7,11 @@
     border-radius: 20px;
 }
 
-.carousel-container {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    /* Centra el contenido horizontalmente zzz */
-}
-
-.carousel-slide {
-    display: none;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.carousel-slide.active {
-    display: block;
-    opacity: 1;
-}
 
 .nav-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.carousel-slide img {
-    width: calc(100% - 2em); /* Estira la imagen hacia los lados y deja 1em de espacio a cada lado */
-    height: auto; /* Mantiene la proporción de altura original */
-    margin-left: 1em; /* Espacio a la izquierda */
-    margin-right: 1em; /* Espacio a la derecha */
-    border: 2px solid yellow;
-    border-radius: 10px;
-}
 
 img {
     max-width: 100%;
@@ -47,9 +23,7 @@ button {
     display: none; /* Oculta los botones de "Anterior" y "Siguiente" */
 }
 
-.carousel-wrapper {
-    text-align: center;
-}
+
 
 .product-cards {
     display: flex;
