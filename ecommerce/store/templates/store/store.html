@@ -26,18 +26,22 @@
         </button>
       </div>
     
-    
+    <h4>Pizzas</h4>
     <div class="product-cards">
-        {% for producto in productos %}
-            <div class="card">
-                <img src="{{ producto.imagen.url }}" alt="{{ producto.titulo }}">
-                <div class="card-info">
-                    <h2>{{ producto.titulo }}</h2>
-                    <p>{{ producto.descripcion }}</p>
-                    <p class="precio">Precio: {{ producto.precio_formateado }} </p>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
+      {% for producto in productos %}
+          <div class="card">
+              <img src="{{ producto.imagen.url }}" alt="{{ producto.titulo }}">
+              <div class="card-info">
+                  <h2>{{ producto.titulo }}</h2>
+                  <p>{{ producto.descripcion }}</p>
+                  <p class="precio">Precio: {{ producto.precio_formateado }} </p>
+                  <form method="post" action="{% url 'agregar_al_carrito' producto.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Agregar al Carrito">
+                </form>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+  
 {% endblock %}
