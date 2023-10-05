@@ -11,22 +11,24 @@
                 {% csrf_token %}
                 <div class="form-group">
                     {{ registro_form.username.label_tag }}
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de usuario">
+                    <input type="text" class="form-control" id="username" name="username">
                 </div>
                 <div class="form-group">
                     {{ registro_form.email.label_tag }}
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico">
+                    <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-group">
                     {{ registro_form.password.label_tag }}
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                    <input type="password" class="form-control" id="password" name="password">
+                    <div id="password-requirements" class="message-box"></div>  <!-- Requisitos de contraseña -->
                 </div>
                 <div class="form-group">
                     {{ registro_form.confirm_password.label_tag }}
-                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirmar Contraseña">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                    <div id="confirm-password-message" class="message-box"></div>  <!-- Mensaje de confirmar contraseña -->
                 </div>
                 <button type="submit" class="btn btn-primary">Registrarse</button>
-            </form>            
+            </form>
         </div>
         <div class="column2">
             <h2>Iniciar Sesión</h2>
@@ -34,15 +36,18 @@
                 {% csrf_token %}
                 <div class="form-group">
                     {{ inicio_sesion_form.username.label_tag }}
-                    <input type="email" class="form-control" id="username" name="username" placeholder="Correo Electrónico">
+                    <input type="email" class="form-control" id="username" name="username">
                 </div>
                 <div class="form-group">
                     {{ inicio_sesion_form.password.label_tag }}
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
             </form>
         </div>
     </div>
 </div>
+
+<script src="{% static 'js/validation.js' %}"></script>
+
 {% endblock %}
