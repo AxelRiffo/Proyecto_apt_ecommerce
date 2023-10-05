@@ -55,6 +55,8 @@ body {
     cursor: pointer;
     background-color: #ddd;
     border-radius: 5px;
+    text-decoration: none;
+    color: black;
 }
 
 
