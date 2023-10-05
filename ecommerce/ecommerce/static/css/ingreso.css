@@ -2,22 +2,48 @@
     background-color: rgba(255, 255, 255, 0.80);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     margin: 0;
     border-radius: 20px;
 }
 
 .columns {
     margin: 5em;
+    display: flex;
 }
 
 .column1 {
-    width: 50%; /* Ancho de la primera columna */
-    float: left; /* Posiciona la columna a la izquierda */
+    flex: 1;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Estilo para la clase de la columna 2 */
 .column2 {
-    width: 50%; /* Ancho de la segunda columna */
-    float: right; /* Posiciona la columna a la derecha */
+    flex: 1;
+    padding: 1em;
+    border-left: 5px solid #7b1506;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.column1 button,
+.column2 button {
+    margin-top: 1em;
+    width: 100%;
+}
+
+/* Agrega separación entre los grupos de formulario */
+.column1 input,
+.column2 input {
+    margin-bottom: 10px;
+}
+
+.column2 h2 {
+    padding-left: 1em;
+}
+
+.column2 form {
+    padding-left: 1em;
 }

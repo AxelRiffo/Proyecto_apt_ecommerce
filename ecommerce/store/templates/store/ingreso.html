@@ -9,20 +9,38 @@
             <h2>Registro</h2>
             <form method="post" action="{% url 'ingreso' %}">
                 {% csrf_token %}
-                {{ registro_form.username.label_tag }} {{ registro_form.username }} <br>
-                {{ registro_form.email.label_tag }} {{ registro_form.email }} <br>
-                {{ registro_form.password.label_tag }} {{ registro_form.password }} <br>
-                {{ registro_form.confirm_password.label_tag }} {{ registro_form.confirm_password }} <br>
-                <button type="submit">Registrarse</button>
+                <div class="form-group">
+                    {{ registro_form.username.label_tag }}
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de usuario">
+                </div>
+                <div class="form-group">
+                    {{ registro_form.email.label_tag }}
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico">
+                </div>
+                <div class="form-group">
+                    {{ registro_form.password.label_tag }}
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                </div>
+                <div class="form-group">
+                    {{ registro_form.confirm_password.label_tag }}
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirmar Contraseña">
+                </div>
+                <button type="submit" class="btn btn-primary">Registrarse</button>
             </form>            
         </div>
         <div class="column2">
             <h2>Iniciar Sesión</h2>
             <form method="post" action="{% url 'ingreso' %}">
                 {% csrf_token %}
-                {{ inicio_sesion_form.username.label_tag }} {{ inicio_sesion_form.username }} <br>
-                {{ inicio_sesion_form.password.label_tag }} {{ inicio_sesion_form.password }} <br>
-                <button type="submit">Iniciar Sesión</button>
+                <div class="form-group">
+                    {{ inicio_sesion_form.username.label_tag }}
+                    <input type="email" class="form-control" id="username" name="username" placeholder="Correo Electrónico">
+                </div>
+                <div class="form-group">
+                    {{ inicio_sesion_form.password.label_tag }}
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
             </form>
         </div>
     </div>
