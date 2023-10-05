@@ -1,15 +1,21 @@
 {% extends 'store/main.html' %}
-{% load static %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-
-<h3>cart</h3>
-<!-- lista_productos.html -->
-{% for producto in productos %}
-<h2>{{ producto.titulo }}</h2>
-<p>Precio: ${{ producto.precio }}</p>
-<p>{{ producto.descripcion }}</p>
-<img src="{{ producto.imagen.url }}" alt="{{ producto.titulo }}">
-{% endfor %}
-
+<h3>Carrito de Compras</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for producto in productos_en_carrito %}
+    <tr>
+      <td>{{ producto.titulo }}</td>
+      <td>${{ producto.precio }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p>Precio Total: ${{ precio_total }}</p>
 {% endblock %}
