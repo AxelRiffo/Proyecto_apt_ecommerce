@@ -27,17 +27,17 @@
       </div>
     
     
-    <div class="product-cards">
+      <div class="product-cards">
         {% for producto in productos %}
-            <div class="card">
-                <img src="{{ producto.imagen.url }}" alt="{{ producto.titulo }}">
-                <div class="card-info">
-                    <h2>{{ producto.titulo }}</h2>
-                    <p>{{ producto.descripcion }}</p>
-                    <p class="precio">Precio: {{ producto.precio_formateado }} </p>
+            <div class="card mb-3" style="max-width: 300px;">
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.titulo }}" class="card-img-top">
+                <div class="card-body">
+                    <h2 class="card-title">{{ producto.titulo }}</h2>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <p class="card-text precio">Precio: {{ producto.precio_formateado }}</p>
                 </div>
             </div>
         {% endfor %}
     </div>
-</div>
+    
 {% endblock %}
