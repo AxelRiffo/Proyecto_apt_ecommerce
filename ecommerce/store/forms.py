@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 import re
 
 class RegistroForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, label='Contraseña')
     confirm_password = forms.CharField(widget=forms.PasswordInput, label='Confirmar Contraseña')
 
     class Meta:
