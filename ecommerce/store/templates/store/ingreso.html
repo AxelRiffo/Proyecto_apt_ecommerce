@@ -29,6 +29,13 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Registrarse</button>
             </form>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
         <div class="column2">
             <h2>Iniciar Sesión</h2>
@@ -44,6 +51,13 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
             </form>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     </div>
 </div>

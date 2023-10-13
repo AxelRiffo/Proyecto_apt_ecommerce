@@ -1,3 +1,4 @@
+/* Estilos para el cuerpo de la página */
 .body {
   background-color: rgba(255, 255, 255, 0.80);
   display: flex;
@@ -7,46 +8,33 @@
   border-radius: 20px;
 }
 
-
-
-
+/* Estilo para el botón de navegación en hover */
 .nav-button:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-
-
+/* Estilos para las imágenes */
 img {
   max-width: 100%;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
 
+/* Estilos para los botones */
 button {
   display: none; /* Oculta los botones de "Anterior" y "Siguiente" */
 }
 
-
-
+/* Estilos para las tarjetas de productos */
 .product-cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px; /* Ajusta el margen según tus preferencias */
 }
 
 .card {
   width: 30%;
-}
-
-button {
-  display: none;
-  /* Oculta los botones de "Anterior" y "Siguiente" */
-}
-
-.product-cards {
-  margin: 10px; /* Ajusta el margen según tus preferencias */
-}
-
-.card {
   background-color: rgba(255, 255, 255, 0.75);
   margin: 10px;
   padding: 10px;
@@ -85,11 +73,9 @@ button {
   margin-bottom: 3px;
 }
 
-
 .precio {
   margin-bottom: auto;
 }
-
 
 /* Estilo para pantallas pequeñas */
 @media (max-width: 767px) {

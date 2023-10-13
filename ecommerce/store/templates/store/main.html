@@ -17,7 +17,11 @@
             <button class="nav-button-l">Promociones</button>
         </div>
         <div class="navbar-right">
-    <a href="{% url 'ingreso' %}" class="nav-button nav-button-login">Ingresar</a>
+            {% if user.is_authenticated %}
+                <a href="#" class="nav-button nav-button-login">Mi cuenta</a>
+            {% else %}
+                <a href="{% url 'ingreso' %}" class="nav-button nav-button-login">Ingresar</a>
+            {% endif %}
         </div>
     </div>
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.humanize.templatetags.humanize import intcomma
@@ -24,6 +25,12 @@ def checkout(request):
     context = {}
     return render(request, 'store/checkout.html', context)
 
+def account(request):
+    # Aquí obtienes la información de la cuenta del usuario y la pasas al template
+    user = request.user
+    context = {'user': user}
+    return render(request, 'store/account.html', context)
+
 def ingreso(request):
     registro_form = RegistroForm()  # Define las variables fuera del bloque condicional
     inicio_sesion_form = InicioSesionForm()
@@ -38,9 +45,12 @@ def ingreso(request):
             password = registro_form.cleaned_data['password']
             # Crear usuario
             user = User.objects.create_user(username=username, email=email, password=password)
-            # Iniciar sesión
-            login(request, user)
-            return redirect('/')  # Página principal después del registro
+
+            # Agregar mensaje de éxito
+            messages.success(request, '¡Registro exitoso!')
+
+            # Redirigir a la página de cuenta
+            return redirect('account')
         elif inicio_sesion_form.is_valid():
             # Procesar inicio de sesión
             username = inicio_sesion_form.cleaned_data['username']
@@ -48,6 +58,7 @@ def ingreso(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')  # Página principal después del inicio de sesión
+                # Redirigir a la página de cuenta
+                return redirect('account')
 
     return render(request, 'store/ingreso.html', {'registro_form': registro_form, 'inicio_sesion_form': inicio_sesion_form})
