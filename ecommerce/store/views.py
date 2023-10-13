@@ -50,7 +50,6 @@ def ingreso(request):
             messages.success(request, '¡Registro exitoso!')
 
             # Redirigir a la página de cuenta
-            return redirect('account')
         elif inicio_sesion_form.is_valid():
             # Procesar inicio de sesión
             username = inicio_sesion_form.cleaned_data['username']
