@@ -30,7 +30,7 @@
                 <button type="submit" class="btn btn-primary">Registrarse</button>
             </form>
             {% if messages %}
-            <div class="messages">
+            <div style="background-color: rgb(35, 194, 35); color: white; border-radius: 20px; text-align: center; padding: 10px; margin: 25px auto;">
                 {% for message in messages %}
                     <h4{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h4>
                 {% endfor %}
