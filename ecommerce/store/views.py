@@ -24,15 +24,9 @@ def checkout(request):
     context = {}
     return render(request, 'store/checkout.html', context)
 
-def account(request):
-    user = request.user
-    context = {'user': user}
-    return render(request, 'store/account.html', context)
-
 def ingreso(request):
     registro_form = RegistroForm()
     inicio_sesion_form = InicioSesionForm()
-
     if request.method == 'POST':
         registro_form = RegistroForm(request.POST)
         inicio_sesion_form = InicioSesionForm(request.POST)
@@ -43,14 +37,13 @@ def ingreso(request):
             user = User.objects.create_user(username=username, email=email, password=password)
             messages.success(request, '¡Registro exitoso!')
             return redirect('account')
-        elif inicio_sesion_form.is_valid():
-            username = inicio_sesion_form.cleaned_data['username']
+        if inicio_sesion_form.is_valid():
+            email = inicio_sesion_form.cleaned_data['email']
             password = inicio_sesion_form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, f'Bienvenido, {user.username}!')
-                return redirect('account')
             else:
                 messages.error(request, 'Inicio de sesión no válido. Por favor, verifique sus credenciales.')
 

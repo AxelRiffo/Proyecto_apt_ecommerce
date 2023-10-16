@@ -28,12 +28,13 @@ class RegistroForm(forms.ModelForm):
             raise forms.ValidationError('Las contraseñas no coinciden.')
 
         # Validaciones adicionales para la contraseña
-        if len(password) < 6:
-            raise forms.ValidationError('La contraseña debe tener al menos 6 caracteres.')
-        if not re.search(r'[A-Z]', password):
-            raise forms.ValidationError('La contraseña debe contener al menos una mayúscula.')
-        if not any(char.isdigit() for char in password):
-            raise forms.ValidationError('La contraseña debe contener al menos un número.')
+        if password:
+            if len(password) < 6:
+                raise forms.ValidationError('La contraseña debe tener al menos 6 caracteres.')
+            if not re.search(r'[A-Z]', password):
+                raise forms.ValidationError('La contraseña debe contener al menos una mayúscula.')
+            if not any(char.isdigit() for char in password):
+                raise forms.ValidationError('La contraseña debe contener al menos un número.')
 
         return cleaned_data
 
