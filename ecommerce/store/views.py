@@ -9,7 +9,6 @@ from .forms import RegistroForm, InicioSesionForm
 def store(request):
     productos = Producto.objects.all()
 
-    # Formatear el precio con punto como separador de miles y coma como separador decimal
     for producto in productos:
         precio_formateado = "${:,.0f}".format(producto.precio).replace(",", ".")
         producto.precio_formateado = precio_formateado
@@ -26,38 +25,33 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 def account(request):
-    # Aquí obtienes la información de la cuenta del usuario y la pasas al template
     user = request.user
     context = {'user': user}
     return render(request, 'store/account.html', context)
 
 def ingreso(request):
-    registro_form = RegistroForm()  # Define las variables fuera del bloque condicional
+    registro_form = RegistroForm()
     inicio_sesion_form = InicioSesionForm()
 
     if request.method == 'POST':
         registro_form = RegistroForm(request.POST)
         inicio_sesion_form = InicioSesionForm(request.POST)
         if registro_form.is_valid():
-            # Procesar registro
             username = registro_form.cleaned_data['username']
             email = registro_form.cleaned_data['email']
             password = registro_form.cleaned_data['password']
-            # Crear usuario
             user = User.objects.create_user(username=username, email=email, password=password)
-
-            # Agregar mensaje de éxito
             messages.success(request, '¡Registro exitoso!')
-
-            # Redirigir a la página de cuenta
+            return redirect('account')
         elif inicio_sesion_form.is_valid():
-            # Procesar inicio de sesión
             username = inicio_sesion_form.cleaned_data['username']
             password = inicio_sesion_form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                # Redirigir a la página de cuenta
+                messages.success(request, f'Bienvenido, {user.username}!')
                 return redirect('account')
+            else:
+                messages.error(request, 'Inicio de sesión no válido. Por favor, verifique sus credenciales.')
 
     return render(request, 'store/ingreso.html', {'registro_form': registro_form, 'inicio_sesion_form': inicio_sesion_form})
