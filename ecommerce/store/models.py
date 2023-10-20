@@ -10,4 +10,4 @@ class Producto(models.Model):
     imagen = models.ImageField(upload_to='productos/', null=True, blank=True)
 
     def __str__(self):
-        return self.titulo
+        return f'{self.titulo}{self.precio}'
