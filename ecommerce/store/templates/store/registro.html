@@ -7,7 +7,7 @@
     <div class="columns">
         <div class="column1">
             <h2>Registro</h2>
-            <form method="post" action="{% url 'ingreso' %}">
+            <form method="post" action="{% url 'cuenta' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     {{ registro_form.username.label_tag }}
@@ -28,28 +28,6 @@
                     <div id="confirm-password-message" class="message-box"></div>
                 </div>
                 <button type="submit" class="btn btn-primary">Registrarse</button>
-            </form>
-            {% if messages %}
-            <div style="background-color: rgb(35, 194, 35); color: white; border-radius: 20px; text-align: center; padding: 10px; margin: 25px auto;">
-                {% for message in messages %}
-                    <h4{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h4>
-                {% endfor %}
-            </div>
-            {% endif %}
-        </div>
-        <div class="column2">
-            <h2>Iniciar Sesión</h2>
-            <form method="post" action="{% url 'ingreso' %}">
-                {% csrf_token %}
-                <div class="form-group">
-                    {{ inicio_sesion_form.username.label_tag }}
-                    <input type="text" class="form-control" id="id_username" name="username">
-                </div>
-                <div class="form-group">
-                    {{ inicio_sesion_form.password.label_tag }}
-                    <input type="password" class="form-control" id="id_password" name="password">
-                </div>
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
             </form>
             {% if messages %}
             <div style="background-color: rgb(35, 194, 35); color: white; border-radius: 20px; text-align: center; padding: 10px; margin: 25px auto;">

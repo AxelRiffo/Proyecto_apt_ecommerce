@@ -1,6 +1,6 @@
 # store/forms.py
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm  # Importa AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 import re
@@ -39,5 +39,5 @@ class RegistroForm(forms.ModelForm):
         return cleaned_data
 
 class InicioSesionForm(AuthenticationForm):
-    username = forms.EmailField(label='Correo Electrónico')
+    email = forms.EmailField(label='Correo Electrónico')  # Usa 'email' en lugar de 'username' aquí.
     password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
