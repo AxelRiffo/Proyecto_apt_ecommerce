@@ -4,39 +4,38 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css' %}">
 
 <div class="body">
-    <div class="columns">
-        <div class="column1">
-            <h2>Registro</h2>
-            <form method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    {{ registro_form.username.label_tag }}
-                    <input type="text" class="form-control" id="username" name="username">
-                </div>
-                <div class="form-group">
-                    {{ registro_form.email.label_tag }}
-                    <input type="email" class="form-control" id="email" name="email">
-                </div>
-                <div class "form-group">
-                    {{ registro_form.password.label_tag }}
-                    <input type="password" class="form-control" id="password" name="password">
-                    <div id="password-requirements" class="message-box"></div>
-                </div>
-                <div class="form-group">
-                    {{ registro_form.confirm_password.label_tag }}
-                    <input type="password" class="form-control" id="confirm_password" name="confirm_password">
-                    <div id="confirm-password-message" class="message-box"></div>
-                </div>
-                <button type="submit" class="btn btn-primary">Registrarse</button>
-            </form>
-            {% if messages %}
-            <div style="background-color: rgb(35, 194, 35); color: white; border-radius: 20px; text-align: center; padding: 10px; margin: 25px auto;">
-                {% for message in messages %}
-                    <h4{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h4>
-                {% endfor %}
+    <div class="column">
+        <h2>Registro</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ registro_form.username.label_tag }}
+                <input type="text" class="form-control" id="username" name="username">
             </div>
-            {% endif %}
+            <div class="form-group">
+                {{ registro_form.email.label_tag }}
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class "form-group">
+                {{ registro_form.password.label_tag }}
+                <input type="password" class="form-control" id="password" name="password">
+                <div id="password-requirements" class="message-box"></div>
+            </div>
+            <div class="form-group">
+                {{ registro_form.confirm_password.label_tag }}
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                <div id="confirm-password-message" class="message-box"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+        </form>
+        {% if messages %}
+        <div
+            style="background-color: rgb(35, 194, 35); color: white; border-radius: 20px; text-align: center; padding: 10px; margin: 25px auto;">
+            {% for message in messages %}
+            <h4{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h4>
+                {% endfor %}
         </div>
+        {% endif %}
     </div>
 </div>
 

@@ -25,24 +25,6 @@ def checkout(request):
     context = {}
     return render(request, 'store/checkout.html', context)
 
-def iniciar_sesion(request):
-    formulario = InicioSesionForm()  # Define el formulario incluso si la solicitud no es POST
-    if request.method == 'POST':
-        formulario = InicioSesionForm(request.POST)
-        if formulario.is_valid():
-            email = formulario.cleaned_data['email']
-            password = formulario.cleaned_data['password']
-            usuario = authenticate(request, email=email, password=password)
-
-            if usuario is not None:
-                login(request, usuario)
-                return redirect('cuenta')  # Cambia 'cuenta' al nombre de tu vista de cuenta si es necesario.
-            else:
-                messages.error(request, 'Credenciales inválidas. Verifica tu correo electrónico y contraseña.')
-        else:
-            messages.error(request, 'Hubo un error en el inicio de sesión. Verifica los datos.')
-    return render(request, 'store/login.html', {'inicio_sesion_form': formulario})
-
 def registro(request):
     if request.method == 'POST':
         formulario = RegistroForm(request.POST)
@@ -57,6 +39,28 @@ def registro(request):
         formulario = RegistroForm()
 
     return render(request, 'store/registro.html', {'registro_form': formulario})
+
+def iniciar_sesion(request):
+    if request.method == 'POST':
+        formulario = InicioSesionForm(request.POST)
+        if formulario.is_valid():
+            email = formulario.cleaned_data['email']
+            password = formulario.cleaned_data['password']
+            # Autenticar al usuario utilizando el correo electrónico y la contraseña
+            usuario = authenticate(request, username=email, password=password)
+
+            if usuario is not None:
+                # Iniciar sesión si la autenticación es exitosa
+                login(request, usuario)
+                return redirect('cuenta')
+            else:
+                messages.error(request, 'Credenciales inválidas. Verifica tu correo electrónico y contraseña.')
+        else:
+            messages.error(request, 'Hubo un error en el inicio de sesión. Verifica los datos.')
+    else:
+        formulario = InicioSesionForm()
+
+    return render(request, 'store/login.html', {'inicio_sesion_form': formulario})
 
 def cuenta(request):
     context = {}

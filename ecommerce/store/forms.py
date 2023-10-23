@@ -40,4 +40,4 @@ class RegistroForm(forms.ModelForm):
 
 class InicioSesionForm(AuthenticationForm):
     email = forms.EmailField(label='Correo Electrónico')
-    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+    password = forms.CharField(label='Contraseña')

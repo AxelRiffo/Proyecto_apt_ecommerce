@@ -4,29 +4,31 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css' %}">
 
 <div class="body">
-    <div class="columns">
-        <div class="column2">
-            <h2>Iniciar Sesión</h2>
-            <form method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    {{ inicio_sesion_form.email.label_tag }}
-                    {{ inicio_sesion_form.email }}
-                </div>
-                <div class="form-group">
-                    {{ inicio_sesion_form.password.label_tag }}
-                    {{ inicio_sesion_form.password }}
-                </div>
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-            </form>
-            {% if messages %}
-            <div style="background-color: rgb(35, 194, 35); color: white; border-radius: 20px; text-align: center; padding: 10px; margin: 25px auto;">
-                {% for message in messages %}
-                    <h4{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h4>
-                {% endfor %}
+    <div class="column">
+        <h2>Iniciar Sesión</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ inicio_sesion_form.email.label_tag }}
+                <input type="email" class="form-control" id="email" name="email">
+                {{ inicio_sesion_form.email.errors }}
             </div>
-            {% endif %}
+            <div class="form-group">
+                {{ inicio_sesion_form.password.label_tag }}
+                <input type="password" class="form-control" id="password" name="password">
+                {{ inicio_sesion_form.password.errors }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </form>
+        {% if messages %}
+        <div
+            style="background-color: rgb(35, 194, 35); color: white; border-radius: 20px; text-align: center; padding: 10px; margin: 25px auto;">
+            {% for message in messages %}
+            <h4{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h4>
+                {% endfor %}
         </div>
+        {% endif %}
     </div>
 </div>
 
