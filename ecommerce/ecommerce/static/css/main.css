@@ -61,7 +61,7 @@ body {
 
 
 /* Estilo para el último botón de ingreso */
-.dropdown {
+#boton_ingreso {
     background-color: #34db63; /* Color de fondo del botón */
     border: none; /* Sin borde */
     border-radius: 5px;
@@ -74,11 +74,11 @@ body {
     display: inline-block; /* Mostrar como bloque en línea */
 }
 
-.nav-button-login:hover {
+#boton_ingreso:hover {
     background-color: #29b989; /* Cambio de color al pasar el ratón */
 }
 
-.nav-button-login:active {
+#boton_ingreso:active {
     background-color: #1abc9c; /* Cambio de color al hacer clic */
 }
 

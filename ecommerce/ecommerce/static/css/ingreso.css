@@ -6,20 +6,8 @@
     border-radius: 20px;
 }
 
-.columns {
+.column {
     margin: 5em;
-    display: flex;
-}
-
-.column1 {
-    flex: 1;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.column2 {
     flex: 1;
     padding: 1em;
     border-left: 5px solid #7b1506;
@@ -28,22 +16,7 @@
     justify-content: center;
 }
 
-.column1 button,
-.column2 button {
+.column button {
     margin-top: 1em;
     width: 100%;
-}
-
-/* Agrega separación entre los grupos de formulario */
-.column1 input,
-.column2 input {
-    margin-bottom: 10px;
-}
-
-.column2 h2 {
-    padding-left: 1em;
-}
-
-.column2 form {
-    padding-left: 1em;
 }

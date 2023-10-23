@@ -14,7 +14,7 @@ class Carrito:
         if id not in self.carrito.keys():
             self.carrito[id]={
                  "producto_id":producto.id,
-                 "nombre": producto.nombre,
+                 "nombre": producto.titulo,
                  "precio total": producto.precio,
                  "cantidad": 1,
             }
@@ -33,7 +33,7 @@ class Carrito:
             del self.carrito[id]
             self.guardar_carrito()
 
-    def resar(self, producto):
+    def restar(self, producto):
         id = str(producto.id)
         if id in self.carrito.keys():
             self.carrito[id]["cantidad"]   -= 1
