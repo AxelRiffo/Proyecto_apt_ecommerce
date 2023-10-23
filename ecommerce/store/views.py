@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.humanize.templatetags.humanize import intcomma
 from .models import Producto
 from .forms import RegistroForm, InicioSesionForm
-
+from .Carrito import Carrito
 def store(request):
     productos = Producto.objects.all()
 
@@ -17,6 +17,28 @@ def store(request):
     context = {'productos': productos}
     return render(request, 'store/store.html', context)
 
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("store")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("store")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("store")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("store")
 def cart(request):
     context = {}
     return render(request, 'store/cart.html', context)
