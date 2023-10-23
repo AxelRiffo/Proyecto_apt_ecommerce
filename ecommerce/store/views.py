@@ -27,34 +27,20 @@ def store(request):
 
 def agregar_producto(request, producto_id):
     carrito = Carrito(request)
-<<<<<<< Updated upstream
     producto = Producto.objects.get(id=producto_id)
-=======
-    producto =  Producto.objects.get(id=producto_id)
->>>>>>> Stashed changes
     carrito.agregar(producto)
     return redirect("store")
 
 def eliminar_producto(request, producto_id):
-<<<<<<< Updated upstream
     carrito = Carrito(request)
-=======
-    carrito =  Carrito(request)
->>>>>>> Stashed changes
     producto = Producto.objects.get(id=producto_id)
     carrito.eliminar(producto)
     return redirect("store")
 
 def restar_producto(request, producto_id):
-<<<<<<< Updated upstream
     carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.restar(producto)
-=======
-    carrito =  Carrito(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.eliminar(producto)
->>>>>>> Stashed changes
     return redirect("store")
 
 def limpiar_carrito(request):
@@ -62,11 +48,6 @@ def limpiar_carrito(request):
     carrito.limpiar()
     return redirect("store")
 
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
 def cart(request):
     context = {}
     return render(request, 'store/cart.html', context)

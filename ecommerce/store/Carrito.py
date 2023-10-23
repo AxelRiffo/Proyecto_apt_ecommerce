@@ -12,19 +12,11 @@ class Carrito:
     def agregar(self, producto):
         id = str(producto.id)
         if id not in self.carrito.keys():
-<<<<<<< Updated upstream
             self.carrito[id]={
                  "producto_id":producto.id,
                  "nombre": producto.titulo,
                  "precio total": producto.precio,
                  "cantidad": 1,
-=======
-            self.carrito[id] = {
-                "producto_id": producto.id,
-                "nombre": producto.titulo,  # Cambiar a "titulo" si ese es el campo correcto
-                "precio total": producto.precio,  # Cambiar a "precio" si ese es el campo correcto
-                "cantidad": 1,
->>>>>>> Stashed changes
             }
         else:
             self.carrito[id]["cantidad"] += 1
@@ -41,11 +33,7 @@ class Carrito:
             del self.carrito[id]
             self.guardar_carrito()
 
-<<<<<<< Updated upstream
     def restar(self, producto):
-=======
-    def restar(self, producto):  # Cambiar "resar" a "restar"
->>>>>>> Stashed changes
         id = str(producto.id)
         if id in self.carrito.keys():
             self.carrito[id]["cantidad"] -= 1
