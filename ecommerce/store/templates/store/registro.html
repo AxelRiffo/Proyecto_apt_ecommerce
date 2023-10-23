@@ -7,7 +7,7 @@
     <div class="columns">
         <div class="column1">
             <h2>Registro</h2>
-            <form method="post" action="{% url 'cuenta' %}">
+            <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     {{ registro_form.username.label_tag }}
@@ -17,7 +17,7 @@
                     {{ registro_form.email.label_tag }}
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
-                <div class="form-group">
+                <div class "form-group">
                     {{ registro_form.password.label_tag }}
                     <input type="password" class="form-control" id="password" name="password">
                     <div id="password-requirements" class="message-box"></div>
