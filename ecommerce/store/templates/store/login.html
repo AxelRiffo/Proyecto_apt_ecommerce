@@ -7,15 +7,15 @@
     <div class="columns">
         <div class="column2">
             <h2>Iniciar Sesión</h2>
-            <form method="post" action="{% url 'login' %}">
+            <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     {{ inicio_sesion_form.email.label_tag }}
-                    <input type="email" class="form-control" id="inicio_email" name="email">
+                    {{ inicio_sesion_form.email }}
                 </div>
                 <div class="form-group">
                     {{ inicio_sesion_form.password.label_tag }}
-                    <input type="password" class="form-control" id="inicio_password" name="password">
+                    {{ inicio_sesion_form.password }}
                 </div>
                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
             </form>
@@ -29,7 +29,5 @@
         </div>
     </div>
 </div>
-
-<script src="{% static 'js/validation.js' %}"></script>
 
 {% endblock %}

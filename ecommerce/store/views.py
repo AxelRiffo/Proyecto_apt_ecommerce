@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.humanize.templatetags.humanize import intcomma
 from .models import Producto
-from .forms import RegistroForm
+from .forms import RegistroForm, InicioSesionForm
 
 def store(request):
     productos = Producto.objects.all()
@@ -26,10 +26,11 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 def iniciar_sesion(request):
+    formulario = InicioSesionForm()  # Define el formulario incluso si la solicitud no es POST
     if request.method == 'POST':
-        formulario = AuthenticationForm(data=request.POST)
+        formulario = InicioSesionForm(request.POST)
         if formulario.is_valid():
-            email = formulario.cleaned_data['email']  # El campo 'username' ahora almacena el correo electrónico.
+            email = formulario.cleaned_data['email']
             password = formulario.cleaned_data['password']
             usuario = authenticate(request, email=email, password=password)
 
@@ -40,8 +41,6 @@ def iniciar_sesion(request):
                 messages.error(request, 'Credenciales inválidas. Verifica tu correo electrónico y contraseña.')
         else:
             messages.error(request, 'Hubo un error en el inicio de sesión. Verifica los datos.')
-
-    formulario = AuthenticationForm()
     return render(request, 'store/login.html', {'inicio_sesion_form': formulario})
 
 def registro(request):
