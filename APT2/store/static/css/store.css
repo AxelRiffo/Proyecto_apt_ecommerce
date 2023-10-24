@@ -1,0 +1,86 @@
+/* Estilos para el cuerpo de la página */
+.body {
+    background-color: rgba(255, 255, 255, 0.80);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    border-radius: 20px;
+  }
+  
+  /* Estilo para el botón de navegación en hover */
+  .nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Estilos para las imágenes */
+  img {
+    max-width: 100%;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  
+  /* Estilos para los botones */
+  button {
+    display: none; /* Oculta los botones de "Anterior" y "Siguiente" */
+  }
+  
+  /* Estilos para las tarjetas de productos */
+  .product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px; /* Ajusta el margen según tus preferencias */
+  }
+  
+  .card {
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.75);
+    margin: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  .card img {
+    aspect-ratio: 1 1; /* Mantén una relación de aspecto de 1:1 */
+  }
+  
+  .card .card-text {
+    min-height: 3em; /* Ajusta la altura máxima según tus preferencias */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .card-img-top {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .card-info {
+    margin-top: 10px;
+  }
+  
+  .card-info h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
+  
+  .card-info p {
+    font-size: 1em;
+    margin-bottom: 3px;
+  }
+  
+  .precio {
+    margin-bottom: auto;
+  }
+  
+  /* Estilo para pantallas pequeñas */
+  @media (max-width: 767px) {
+    .card {
+      width: 100%; /* Tarjetas ocupan el 100% del ancho en pantallas pequeñas */
+    }
+  }
+  
