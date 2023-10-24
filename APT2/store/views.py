@@ -4,13 +4,41 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.db import IntegrityError
 from .models import Producto
+from .Carrito import Carrito
+
+
 
 def store(request):
     productos = Producto.objects.all()
+
+    for producto in productos:
+        precio_formateado = "${:,.0f}".format(producto.precio).replace(",", ".")
+        producto.precio_formateado = precio_formateado
+
     context = {'productos': productos}
-    return render(request, 'store.html')
+    return render(request, 'store.html', context)
 
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("store")
 
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("store")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("store")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("store")
 def signup(request):
 
     if request.method == 'GET':
