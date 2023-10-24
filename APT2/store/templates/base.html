@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>GioPizza</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div id="navbar">
+      <div class="navbar-left">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo" />
+        <a href="/" class="nav-button-l">Menú</a>
+        <button class="nav-button-l">Promociones</button>
+      </div>
+      <div class="navbar-right">
+        {% if user.is_authenticated %}
+          <div class="dropdown">
+            <button id="boton_ingreso" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Hola {{ user.username }}</button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/cuenta">Mi cuenta</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/logout">Cerrar sesión</a>
+              </li>
+            </ul>
+          </div>
+        {% else %}
+          <div class="dropdown">
+            <button id="boton_ingreso" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Ingreso</button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/signin">Iniciar sesión</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/signup">Registrarse</a>
+              </li>
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div id="container">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>GioPizza</h4>
+          <ul>
+            <li>
+              <a href="#">Pizzas</a>
+            </li>
+            <li>
+              <a href="#">Acerca de nosotros</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Ayuda</h4>
+          <ul>
+            <li>
+              <a href="#">Preguntas frecuentes</a>
+            </li>
+            <li>
+              <a href="#">Contacto</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Dirección</h4>
+          <p>Dirección del local*</p>
+        </div>
+        <div class="footer-section">
+          <h4>Redes Sociales</h4>
+          <li>
+            <a href="https://www.instagram.com/gio_pizzeria_al_forno/">Instagram</a>
+          </li>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>© 2023 GioPizza, todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

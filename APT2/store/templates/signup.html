@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}" />
+
+  <div class="body">
+    <h1>REGISTRO</h1>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button>Registrarme</button>
+      {{ error }}
+    </form>
+  </div>
+{% endblock %}

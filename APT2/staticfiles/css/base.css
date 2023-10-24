@@ -1,0 +1,163 @@
+body {
+    background-image: url('/static/img/background.jpg');
+    background-repeat: repeat;
+    background-size: 10%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Gabarito', monospace;
+}
+
+
+
+
+@font-face {
+    font-family: 'Gabarito';
+    src: url('/static/font/Gabarito-VariableFont_wght.ttf') format('truetype');
+  }
+
+/* Estilo para la barra de navegación */
+#navbar {
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 2em;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+/* Estilo para la parte derecha del navbar */
+.navbar-right {
+    margin-left: auto; /* Moverá los elementos hacia la derecha */
+    display: flex;
+    align-items: center; /* Para alinear verticalmente */
+}
+
+/* Estilo para la parte izquierda del navbar */
+.navbar-left {
+    margin-right: auto; /* Moverá los elementos hacia la derecha */
+    display: flex;
+    align-items: center; /* Para alinear verticalmente */
+}
+
+/* Estilo para los botones del navbar */
+.nav-button-l {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Estilo para el último botón de ingreso */
+#boton_ingreso {
+    background-color: #34db63; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px;
+    color: #fff; /* Color del texto */
+    cursor: pointer; /* Cursor predeterminado */
+    padding: 15px 25px; /* Relleno del botón */
+    margin-right: 15px;
+    font-size: 16px; /* Tamaño de fuente */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como bloque en línea */
+}
+
+#boton_ingreso:hover {
+    background-color: #29b989; /* Cambio de color al pasar el ratón */
+}
+
+#boton_ingreso:active {
+    background-color: #1abc9c; /* Cambio de color al hacer clic */
+}
+
+/* Cambio de color al pasar el ratón por encima de los botones */
+.nav-button-l:hover {
+    background-color: #aaa;
+}
+
+.logo, .footer-logo{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+#container {
+    padding: 20px;
+    margin-left: 6em;
+    margin-right: 6em;
+    flex: 1;
+}
+
+footer {
+    background-color: #7b1506;
+    color: white;
+    margin-top: 2em;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    display: flex; /* Usar flexbox */
+    flex-direction: row; /* Cambiar la dirección de flexión a fila (en lugar de columna) */
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px; /* Ajusta el ancho máximo según tu diseño */
+    margin-bottom: 20px; /* Espacio entre las secciones y el copyright */
+}
+
+.footer-section {
+    flex: 1;
+    margin: 0 10px; /* Espacio horizontal entre las secciones */
+}
+/* Estilo para el div de copyright */
+
+.copyright {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section p {
+    margin: 0;
+}
+
+/*Responsive*/
+@media screen and (max-width: 850px){
+    main {
+         margin-top: 50px;
+    }
+}

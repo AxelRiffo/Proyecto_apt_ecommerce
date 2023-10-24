@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}" />
+
+  <div class="body">
+    <h1>INICIAR SESION</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button>Ingresar</button>
+    </form>
+  </div>
+{% endblock %}
