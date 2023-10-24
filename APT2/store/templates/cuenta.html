@@ -1,9 +1,96 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}" />
+<div class="container">
+  <div class="perfil">
+    <div class="headercard">
+      <h2 class="tipografiatitle1">Datos del usuario {{ user.username }}</h2>
+    </div><!-- card-header -->
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="col-8">
+            <br>
+            <p class="perfilText"><strong>Nombre de usuario:</strong> {{ user.username }}</p>
+            <p class="perfilText"><strong>Contraseña:</strong> **************** </p>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+      </div><!-- row -->
+    </div><!-- card-body -->
+    <button type="button" class=" btnshorario1 tipografia" data-bs-toggle="modal" data-bs-target="#modal">
+      Editar perfil
+    </button>
+  </div><!-- card -->
+</div>
 
-  <div class="body">
-    <h1>CUENTA</h1>
+<!-- Historial de Pedidos -->
+<div class="container">
+  <div class="perfil">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="col-8">
+            <br>
+            <div class="headercard">
+              <h2 class="tipografiatitle1">Historial de Pedidos</h2>
+            </div><!-- card-header -->
+<ul>
+  <li>Pedido 1: Pizza Margarita - Fecha: 01/10/2023</li>
+  <li>Pedido 2: Pizza Pepperoni - Fecha: 03/10/2023</li>
+  <!-- Agrega más elementos de lista para otros pedidos -->
+</ul>
+
+<!-- Seguimiento de Pedidos -->
+<div class="headercard">
+  <h2 class="tipografiatitle1">Seguimiento de Pedidos</h2>
+</div><!-- card-header -->
+<p>Estado del pedido actual: Preparando su pizza</p>
+<p>Estimado de entrega: 15 minutos</p>
+</div>
+</div>
+<div class="col-md-3"></div>
+<div class="col-md-3"></div>
+</div><!-- row -->
+</div><!-- card-body -->
+</div><!-- card -->
+</div>
+
+
+<!-- Modal para editar perfil-->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title modal-reserva" id="modalLabel{{ solicitud.id }}">Editar informacion de {{user.username}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Aquí puedes mostrar los detalles de la solicitud de forma detallada -->
+        <p class="modal-datos"><strong>Nombre de usuario:</strong> {{ user.username }}</p>
+        <p class="modal-datos"><strong>Contraseña: </strong> {{ user.password }}</p>
+        <p class="modal-datos"><strong>Confirmar contraseña: </strong> {{ user.password1 }}</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-success">Aceptar</button>
+      </div>
+    </div>
   </div>
+</div>
+<script>
+  // Activar el modal al hacer clic en el botón "ver detalles"
+  $("#myModalBtn").click(function () {
+    $("#myModal").modal("show");
+  });
+
+  $("#cancelBtn").click(function () {
+    $("#myModal").modal("hide")
+  })
+</script>
 {% endblock %}
