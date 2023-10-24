@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.humanize.templatetags.humanize import intcomma
 from django.http import JsonResponse
 from decimal import Decimal
 from .Carrito import Carrito
+from django.db import IntegrityError
 
 
 from .models import Producto
@@ -55,44 +56,3 @@ def cart(request):
 def checkout(request):
     context = {}
     return render(request, 'store/checkout.html', context)
-
-def registro(request):
-    if request.method == 'POST':
-        formulario = RegistroForm(request.POST)
-        if formulario.is_valid():
-            # Guardar el usuario
-            usuario = formulario.save()
-            messages.success(request, 'Registro exitoso.')
-        else:
-            messages.error(request, 'Hubo un error en el registro. Por favor, verifica los datos.')
-
-    else:
-        formulario = RegistroForm()
-
-    return render(request, 'store/registro.html', {'registro_form': formulario})
-
-def iniciar_sesion(request):
-    if request.method == 'POST':
-        formulario = InicioSesionForm(request.POST)
-        if formulario.is_valid():
-            email = formulario.cleaned_data['email']
-            password = formulario.cleaned_data['password']
-            # Autenticar al usuario utilizando el correo electrónico y la contraseña
-            usuario = authenticate(request, username=email, password=password)
-
-            if usuario is not None:
-                # Iniciar sesión si la autenticación es exitosa
-                login(request, usuario)
-                return redirect('cuenta')
-            else:
-                messages.error(request, 'Credenciales inválidas. Verifica tu correo electrónico y contraseña.')
-        else:
-            messages.error(request, 'Hubo un error en el inicio de sesión. Verifica los datos.')
-    else:
-        formulario = InicioSesionForm()
-
-    return render(request, 'store/login.html', {'inicio_sesion_form': formulario})
-
-def cuenta(request):
-    context = {}
-    return render(request, 'store/cuenta.html',context)
