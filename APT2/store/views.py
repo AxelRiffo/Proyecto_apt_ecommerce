@@ -22,23 +22,23 @@ def agregar_producto(request, producto_id):
     carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.agregar(producto)
-    return redirect("store")
+    return redirect("Store")
 
 def eliminar_producto(request, producto_id):
     carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.eliminar(producto)
-    return redirect("store")
+    return redirect("Store")
 
 def restar_producto(request, producto_id):
     carrito = Carrito(request)
     carrito.limpiar()
-    return redirect("store")
+    return redirect("Store")
 
 def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
-    return redirect("store")
+    return redirect("Store")
 def signup(request):
 
     if request.method == 'GET':
