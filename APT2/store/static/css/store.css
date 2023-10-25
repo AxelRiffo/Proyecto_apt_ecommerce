@@ -102,6 +102,15 @@
       font-weight: 600;
       line-height: normal;
     }
+
+.textPedido {
+  color: #ffff;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
   
     .tipografia {
       color: #ffff;
@@ -213,3 +222,42 @@
       overflow: auto;
       /* Si el contenido es largo, permite el desplazamiento */
     }
+
+ul.pedido {
+  list-style-type: none;
+  background-color: #510000;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+li.pedido-titulo {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+li.pedido-item {
+  margin-left: 20px;
+}
+
+/* Estilo para los elementos de título y el fondo de la lista */
+.pedido {
+  background-color: #510000;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+/* Estilo para los elementos de título */
+.pedido-titulo {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Estilo para los elementos de la lista */
+.pedido-item {
+  margin-left: 20px;
+  color: #fffdfd;
+}
