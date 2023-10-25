@@ -6,7 +6,11 @@ from django.db import IntegrityError
 from .models import Producto
 from .Carrito import Carrito
 
+#DETALLES FUNCIONALES EN EL SISTEMA
+from django.contrib import messages
 
+#MODELOS Y FORMULARIOS
+from .forms import CustomUserCreationForm
 
 def store(request):
     productos = Producto.objects.all()
@@ -82,3 +86,16 @@ def signin(request):
         return render(request, 'signin.html', {
             'form': AuthenticationForm
         })
+    
+#REGISTRO SITE;
+def registro(request):
+    dato = {
+        'form': CustomUserCreationForm()
+    }
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request,"te has registrado correctamente")
+        return redirect('login')
+    return render(request, 'registration/registro.html', dato)

@@ -184,7 +184,7 @@
     }
   
     .btnshorario1:hover {
-      background-color: #fff;
+      background-color: transparent;
       color: #000;
       border: 2px solid #000;
     }
