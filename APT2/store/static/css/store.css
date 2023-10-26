@@ -13,13 +13,6 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Estilos para las imágenes */
-img {
-  max-width: 100%;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-}
-
 
 /* Estilos para las tarjetas de productos */
 .product-cards {
@@ -46,11 +39,12 @@ img {
 }
 
 .card-img {
+  max-width: 100%;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   aspect-ratio: 1 1;
   /* Mantén una relación de aspecto de 1:1 */
-  max-width: 100%;
   height: auto;
-  border-radius: 10px;
 }
 
 .card-text {
