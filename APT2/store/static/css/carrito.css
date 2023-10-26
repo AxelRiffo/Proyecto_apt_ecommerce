@@ -1,0 +1,84 @@
+/* Estilo para el contenedor del carrito */
+
+
+
+/* Estilo para el título "CARRITO" */
+.text-center {
+    font-size: 24px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    color: #ffcc00; /* Color dorado */
+}
+
+/* Estilo para la tabla */
+.table {
+    border: 2px solid black; /* Borde dorado */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+/* Estilo para los encabezados de la tabla */
+.table th {
+    background-color: #8f0000;/* Fondo dorado */
+    color: #fff; /* Texto blanco */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilo para los botones de "+" y "-" */
+.btn-success, .btn-danger {
+    font-size: 18px; /* Tamaño del texto */
+    padding: 5px 10px; /* Espaciado interior */
+    border-radius: 50%; /* Bordes redondeados */
+    margin-left: 5px; /* Espaciado izquierdo */
+}
+
+/* Estilo para el botón "Limpiar" */
+.btn-danger {
+    background-color: #ff6f61; /* Fondo rojo */
+    color: #fff; /* Texto blanco */
+}
+
+/* Estilo para el botón "Guardar" */
+.btn-success {
+    background-color: #4caf50; /* Fondo verde */
+    color: #fff; /* Texto blanco */
+}
+
+/* Estilo para el total */
+#total_carrito {
+    font-size: 20px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    background-color: #8f0000;/* Color dorado */
+}
+
+/* Estilo para la alerta "Sin Productos" */
+.alert-danger {
+    background-color: #8f0000; /* Fondo rojo */
+    color: #fff; /* Texto blanco */
+    font-size: 18px; /* Tamaño del texto */
+    padding: 10px; /* Espaciado interior */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilo para los botones + y - */
+.float-left {
+    float: left;
+    margin-right: 5px; /* Ajusta el espacio entre el botón y la cantidad */
+}
+
+.float-right {
+    float: right;
+    margin-left: 5px; /* Ajusta el espacio entre el botón y la cantidad */
+}
+
+/* Estilo para la cantidad */
+.quantity {
+    display: inline-block;
+    width: 30px; /* Ajusta el ancho según tus necesidades */
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-increment {
+    padding: 6px 6px; /* Ajusta el tamaño de relleno según tus preferencias */
+    font-size: 6px; /* Ajusta el tamaño de fuente según tus preferencias */
+}

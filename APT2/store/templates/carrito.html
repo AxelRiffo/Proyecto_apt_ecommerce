@@ -1,3 +1,11 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Resto del contenido del encabezado -->
+    <link rel="stylesheet" href="{% static 'css/carrito.css' %}" />
 <div class="alert alert-primary" role="alert">
   <table class="table table-bordered">
       <thead>
@@ -17,10 +25,11 @@
                   <td>{{value.nombre}}</td>
                   <td>${{value.acumulado}}</td>
                   <td>
-                      {{value.cantidad}}
-                      <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-success">+</a>
-                      <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-danger">-</a>
-                  </td>
+                    <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-danger btn-increment">-</a>
+                    <span class="quantity">{{ value.cantidad }}</span>
+                    <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-success btn-increment">+</a>
+                </td>
+                
               </tr>
               {% endfor %}
           {% else %}
