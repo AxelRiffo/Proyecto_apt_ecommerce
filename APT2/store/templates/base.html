@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>GioPizza</title>
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
@@ -25,11 +26,14 @@
         <div class="navbar-right">
           
           <div class="btn-group">
-            <button id="cart-button" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Carrito</button>
+            <button id="cart-button" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Carrito <span class="badge bg-success">{{ total_carrito }}</span>
+            </button>
             <ul class="dropdown-menu dropdown-menu-end">
-              {% include "carrito.html" %}
+                {% include "carrito.html" %}
             </ul>
-          </div>
+        </div>
+        
 
           {% if user.is_authenticated %}
             <div class="dropdown">

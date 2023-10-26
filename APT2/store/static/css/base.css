@@ -39,6 +39,7 @@ body {
     font-family: 'Gabarito', monospace;
 }
 
+/* Estilos iniciales de la barra de navegación */
 .navbar {
     background-color: white;
     padding: 10px;
@@ -47,10 +48,11 @@ body {
     align-items: center;
     border-radius: 0 0 25px 25px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-    position: sticky;
+    position: sticky; /* Cambia "position: -webkit-sticky;" a "position: sticky;" */
     top: 0;
     z-index: 100;
 }
+
 
 .navbar-left {
     margin-right: auto;
