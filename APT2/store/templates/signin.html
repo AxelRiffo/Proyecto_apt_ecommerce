@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/signin.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css' %}" />
 
   <div class="body">
     <h1>INICIAR SESION</h1>
-    <form action="" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button>Ingresar</button>
-    </form>
+
+    <div class="column">
+      <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Ingresar</button>
+      </form>
+    </div>
   </div>
 {% endblock %}

@@ -6,21 +6,24 @@ from django.db import IntegrityError
 from .models import Producto
 from .Carrito import Carrito
 
-#DETALLES FUNCIONALES EN EL SISTEMA
+# DETALLES FUNCIONALES EN EL SISTEMA
 from django.contrib import messages
 
-#MODELOS Y FORMULARIOS
+# MODELOS Y FORMULARIOS
 from .forms import CustomUserCreationForm
+
 
 def store(request):
     productos = Producto.objects.all()
 
     for producto in productos:
-        precio_formateado = "${:,.0f}".format(producto.precio).replace(",", ".")
+        precio_formateado = "${:,.0f}".format(
+            producto.precio).replace(",", ".")
         producto.precio_formateado = precio_formateado
 
     context = {'productos': productos}
     return render(request, 'store.html', context)
+
 
 def agregar_producto(request, producto_id):
     carrito = Carrito(request)
@@ -28,11 +31,13 @@ def agregar_producto(request, producto_id):
     carrito.agregar(producto)
     return redirect("Store")
 
+
 def eliminar_producto(request, producto_id):
     carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.eliminar(producto)
     return redirect("Store")
+
 
 def restar_producto(request, producto_id):
     carrito = Carrito(request)
@@ -40,10 +45,13 @@ def restar_producto(request, producto_id):
     carrito.restar(producto)
     return redirect("Store")
 
+
 def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
     return redirect("Store")
+
+
 def signup(request):
 
     if request.method == 'GET':
@@ -87,8 +95,10 @@ def signin(request):
         return render(request, 'signin.html', {
             'form': AuthenticationForm
         })
-    
-#REGISTRO SITE;
+
+# REGISTRO SITE;
+
+
 def registro(request):
     dato = {
         'form': CustomUserCreationForm()
@@ -97,6 +107,6 @@ def registro(request):
         formulario = CustomUserCreationForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request,"te has registrado correctamente")
+            messages.success(request, "te has registrado correctamente")
         return redirect('login')
     return render(request, 'registration/registro.html', dato)

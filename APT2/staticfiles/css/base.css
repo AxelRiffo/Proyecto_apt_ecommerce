@@ -10,12 +10,10 @@ body {
 }
 
 
-
-
 @font-face {
     font-family: 'Gabarito';
     src: url('/static/font/Gabarito-VariableFont_wght.ttf') format('truetype');
-  }
+}
 
 /* Estilo para la barra de navegación */
 #navbar {
@@ -34,16 +32,20 @@ body {
 
 /* Estilo para la parte derecha del navbar */
 .navbar-right {
-    margin-left: auto; /* Moverá los elementos hacia la derecha */
+    margin-left: auto;
+    /* Moverá los elementos hacia la derecha */
     display: flex;
-    align-items: center; /* Para alinear verticalmente */
+    align-items: center;
+    /* Para alinear verticalmente */
 }
 
 /* Estilo para la parte izquierda del navbar */
 .navbar-left {
-    margin-right: auto; /* Moverá los elementos hacia la derecha */
+    margin-right: auto;
+    /* Moverá los elementos hacia la derecha */
     display: flex;
-    align-items: center; /* Para alinear verticalmente */
+    align-items: center;
+    /* Para alinear verticalmente */
 }
 
 /* Estilo para los botones del navbar */
@@ -62,24 +64,34 @@ body {
 
 /* Estilo para el último botón de ingreso */
 #boton_ingreso {
-    background-color: #34db63; /* Color de fondo del botón */
-    border: none; /* Sin borde */
+    background-color: #34db63;
+    /* Color de fondo del botón */
+    border: none;
+    /* Sin borde */
     border-radius: 5px;
-    color: #fff; /* Color del texto */
-    cursor: pointer; /* Cursor predeterminado */
-    padding: 15px 25px; /* Relleno del botón */
+    color: #fff;
+    /* Color del texto */
+    cursor: pointer;
+    /* Cursor predeterminado */
+    padding: 15px 25px;
+    /* Relleno del botón */
     margin-right: 15px;
-    font-size: 16px; /* Tamaño de fuente */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Mostrar como bloque en línea */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    text-decoration: none;
+    /* Sin subrayado */
+    display: inline-block;
+    /* Mostrar como bloque en línea */
 }
 
 #boton_ingreso:hover {
-    background-color: #29b989; /* Cambio de color al pasar el ratón */
+    background-color: #29b989;
+    /* Cambio de color al pasar el ratón */
 }
 
 #boton_ingreso:active {
-    background-color: #1abc9c; /* Cambio de color al hacer clic */
+    background-color: #1abc9c;
+    /* Cambio de color al hacer clic */
 }
 
 /* Cambio de color al pasar el ratón por encima de los botones */
@@ -87,7 +99,8 @@ body {
     background-color: #aaa;
 }
 
-.logo, .footer-logo{
+.logo,
+.footer-logo {
     width: 100px;
     height: 100px;
     margin-right: 10px;
@@ -108,8 +121,10 @@ footer {
     padding: 10px;
     width: 100%;
     text-align: center;
-    display: flex; /* Usar flexbox */
-    flex-direction: row; /* Cambiar la dirección de flexión a fila (en lugar de columna) */
+    display: flex;
+    /* Usar flexbox */
+    flex-direction: row;
+    /* Cambiar la dirección de flexión a fila (en lugar de columna) */
 }
 
 .footer-content {
@@ -117,14 +132,18 @@ footer {
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
-    max-width: 1200px; /* Ajusta el ancho máximo según tu diseño */
-    margin-bottom: 20px; /* Espacio entre las secciones y el copyright */
+    max-width: 1200px;
+    /* Ajusta el ancho máximo según tu diseño */
+    margin-bottom: 20px;
+    /* Espacio entre las secciones y el copyright */
 }
 
 .footer-section {
     flex: 1;
-    margin: 0 10px; /* Espacio horizontal entre las secciones */
+    margin: 0 10px;
+    /* Espacio horizontal entre las secciones */
 }
+
 /* Estilo para el div de copyright */
 
 .copyright {
@@ -156,8 +175,8 @@ footer {
 }
 
 /*Responsive*/
-@media screen and (max-width: 850px){
+@media screen and (max-width: 850px) {
     main {
-         margin-top: 50px;
+        margin-top: 50px;
     }
 }

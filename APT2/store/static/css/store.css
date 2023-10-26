@@ -20,10 +20,6 @@
     border-radius: 10px;
   }
   
-  /* Estilos para los botones */
-  button {
-    display: none; /* Oculta los botones de "Anterior" y "Siguiente" */
-  }
   
   /* Estilos para las tarjetas de productos */
   .product-cards {
