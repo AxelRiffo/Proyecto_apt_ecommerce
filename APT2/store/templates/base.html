@@ -27,12 +27,18 @@
           
           <div class="btn-group">
             <button id="cart-button" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Carrito <span class="badge bg-success">{{ total_carrito }}</span>
+                <img src="{% static 'ruta/a/la/imagen.png' %}" alt="Carrito" />
+                {% if cantidad_productos > 0 %}
+                    <span class="badge bg-success">{{ cantidad_productos }}</span>
+                {% else %}
+                    <span class="badge bg-success">0</span>
+                {% endif %}
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
                 {% include "carrito.html" %}
             </ul>
         </div>
+        
         
 
           {% if user.is_authenticated %}
