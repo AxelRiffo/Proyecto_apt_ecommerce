@@ -23,6 +23,14 @@
           <a href="#" class="nav-button">Promociones</a>
         </div>
         <div class="navbar-right">
+          
+          <div class="btn-group">
+            <button id="cart-button" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Carrito</button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              {% include "carrito.html" %}
+            </ul>
+          </div>
+
           {% if user.is_authenticated %}
             <div class="dropdown">
               <button id="dropdown-button" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Hola {{ user.username }}</button>

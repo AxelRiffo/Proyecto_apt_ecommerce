@@ -4,9 +4,8 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css' %}" />
 
   <div class="body">
-    <h1>INICIAR SESION</h1>
-
     <div class="column">
+      <h1>INICIAR SESION</h1>
       <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}

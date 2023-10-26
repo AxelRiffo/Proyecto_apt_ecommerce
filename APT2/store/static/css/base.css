@@ -12,7 +12,8 @@
 }
 
 #loader-container img {
-    width: 100px; /* Tamaño de la imagen de carga */
+    width: 100px;
+    /* Tamaño de la imagen de carga */
 }
 
 
@@ -22,7 +23,7 @@
 }
 
 @media screen and (max-width: 850px) {
-    main{
+    main {
         margin-top: 50px;
     }
 }
@@ -94,10 +95,21 @@ body {
     background-color: #74d790;
 }
 
+#cart-button {
+    background-color: white;
+    color: black;
+    margin: 0 20px; /* Agrega margen de 20px a los lados */
+}
+
+
+.btn.btn-secondary::after {
+    display: none;
+}
+
 .logo {
     width: 100px;
     height: 100px;
-    margin-right: 10px;
+    margin: 20px;
     border-radius: 50%;
 }
 
@@ -114,6 +126,8 @@ body {
     padding: 10px;
     width: 100%;
     justify-content: space-around;
-    position: relative; /* Agrega posición relativa para que el espacio inferior funcione */
-    bottom: 0; /* Alinea el pie de página en la parte inferior del contenedor */
+    position: relative;
+    /* Agrega posición relativa para que el espacio inferior funcione */
+    bottom: 0;
+    /* Alinea el pie de página en la parte inferior del contenedor */
 }

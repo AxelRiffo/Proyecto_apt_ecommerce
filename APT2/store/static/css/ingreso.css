@@ -26,3 +26,8 @@
     border: none;
     cursor: pointer;
 }
+
+.footer {
+    position:absolute; /* Agrega posición relativa para que el espacio inferior funcione */
+    bottom: 0; /* Alinea el pie de página en la parte inferior del contenedor */
+}

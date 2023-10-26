@@ -41,6 +41,10 @@ img {
   position: relative; /* Añadir posición relativa para contener el botón */
 }
 
+.card-title {
+  margin-top: 20px;
+}
+
 .card-img {
   aspect-ratio: 1 1;
   /* Mantén una relación de aspecto de 1:1 */
@@ -51,6 +55,11 @@ img {
 
 .card-text {
   min-height: 100px;
+}
+
+.card-precio {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 #boton-precio {
