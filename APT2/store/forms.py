@@ -1,18 +1,16 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import comuna, UserProfile
+from .models import UserProfile
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
-    rut = forms.CharField(max_length=10)
-    comuna = forms.ModelChoiceField(queryset=comuna.objects.all())
 
     class Meta:
         model = User
-        fields = ("username", "email", "first_name", "last_name", "rut", "comuna", "password1", "password2")
+        fields = ("username", "email", "first_name", "last_name", "password1", "password2")
 
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self).save(commit=False)
@@ -21,7 +19,7 @@ class CustomUserCreationForm(UserCreationForm):
         user.last_name = self.cleaned_data['last_name']
         if commit:
             user.save()
-            profile = UserProfile(user=user, rut=self.cleaned_data['rut'], comuna=self.cleaned_data['comuna'])
+            profile = UserProfile(user=user)
             profile.save()
         return user
 
