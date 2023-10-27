@@ -130,4 +130,10 @@ body {
     /* Agrega posición relativa para que el espacio inferior funcione */
     bottom: 0;
     /* Alinea el pie de página en la parte inferior del contenedor */
+    flex-shrink: 0;
+}
+
+
+.contenido_base {
+    flex: 1 0 auto;
 }

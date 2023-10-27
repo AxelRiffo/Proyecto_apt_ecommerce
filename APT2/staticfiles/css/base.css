@@ -180,3 +180,10 @@ footer {
         margin-top: 50px;
     }
 }
+.contenido_base {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}

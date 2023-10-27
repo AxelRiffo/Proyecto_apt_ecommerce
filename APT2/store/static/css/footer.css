@@ -43,3 +43,7 @@
 .footer-section p {
     margin: 0;
 }
+
+.footer {
+    flex-shrink: 0;
+}

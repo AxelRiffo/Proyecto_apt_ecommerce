@@ -5,12 +5,11 @@ from django.contrib.auth import login, logout
 from django.db import IntegrityError
 from .models import Producto, provincia, region, comuna
 from .Carrito import Carrito
+from django.contrib.auth import authenticate
 
 # DETALLES FUNCIONALES EN EL SISTEMA
 from django.contrib import messages
 
-# MODELOS Y FORMULARIOS
-from .forms import CustomUserCreationForm
 
 
 def store(request):
@@ -51,31 +50,27 @@ def limpiar_carrito(request):
     carrito.limpiar()
     return redirect("Store")
 
+from .forms import CustomUserCreationForm
 
 def signup(request):
-
     if request.method == 'GET':
         return render(request, 'signup.html', {
-            'form': UserCreationForm
+            'form': CustomUserCreationForm()
         })
     else:
-        if request.POST['password1'] == request.POST['password2']:
-            try:
-                user = User.objects.create_user(
-                    username=request.POST['username'], password=request.POST['password1'])
-                user.save()
-                login(request, user)
-                return redirect('Cuenta')
-            except IntegrityError:
-                return render(request, 'signup.html', {
-                    'form': UserCreationForm,
-                    "error": 'El usuario ya existe'
-                })
-        return render(request, 'signup.html', {
-            'form': UserCreationForm,
-            "error": 'Las contraseñas no coinciden'
-        })
-
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('Cuenta')
+        else:
+            return render(request, 'signup.html', {
+                'form': form,
+                "error": 'Hubo un error en el registro'
+            })
 
 def cuenta(request):
     return render(request, 'cuenta.html')
@@ -95,23 +90,6 @@ def signin(request):
         return render(request, 'signin.html', {
             'form': AuthenticationForm
         })
-
-# REGISTRO SITE;
-
-
-def registro(request):
-    dato = {
-        'form': CustomUserCreationForm()
-    }
-    if request.method == 'POST':
-        formulario = CustomUserCreationForm(data=request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            messages.success(request, "te has registrado correctamente")
-        return redirect('login')
-    return render(request, 'registration/registro.html', dato)
-
-
 
 
 
