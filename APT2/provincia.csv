@@ -1,0 +1,58 @@
+nombre,id,region
+Iquique,11,1
+Tamarugal,14,1
+Antofagasta,21,2
+El Loa,22,2
+Tocopilla,23,2
+Copiapo ,31,3
+Chañaral  ,32,3
+Huasco,33,3
+Elqui,41,4
+Choapa,42,4
+Limari,43,4
+Valparaíso,51,5
+Isla de Pascua,52,5
+Los Andes,53,5
+Petorca,54,5
+Quillota,55,5
+San Antonio,56,5
+San Felipe,57,5
+Marga Marga,58,5
+Cachapoal,61,6
+Cardenal Caro,62,6
+Colchagua,63,6
+Talca,71,7
+Cauquenes,72,7
+Curico,73,7
+Linares,74,7
+Concepción,81,8
+Arauco,82,8
+Bío - Bío,83,8
+Cautín,91,9
+Malleco,92,9
+Llanquihue,101,10
+Chiloe,102,10
+Osorno,103,10
+Palena,104,10
+Coihaique,111,11
+Aisén,112,11
+Capitan Prat,113,11
+General Carrera,114,11
+Magallanes,121,12
+Antártica Chilena,122,12
+Tierra del Fuego,123,12
+Ultima Esperanza,124,12
+Santiago,131,13
+Cordillera,132,13
+Chacabuco,133,13
+Maipo,134,13
+Melipilla,135,13
+Talagante,136,13
+Valdivia,141,14
+Ranco,142,14
+Arica,151,15
+Parinacota,152,15
+Diguillín,161,15
+Itata,162,16
+Punilla,163,16
+
