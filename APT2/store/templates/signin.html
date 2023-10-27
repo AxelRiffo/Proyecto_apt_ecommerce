@@ -10,6 +10,9 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button>Ingresar</button>
+        {% if error_message %}
+          {{ error_message }}
+        {% endif %}
       </form>
     </div>
   </div>

@@ -87,14 +87,23 @@ def signout(request):
 
 
 def signin(request):
-    if request.method == 'GET':
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm
-        })
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            # Inicio de sesión exitoso
+            user = form.get_user()
+            login(request, user)
+            return redirect('Cuenta')
+        else:
+            # Inicio de sesión fallido
+            error_message = "Credenciales incorrectas. Inténtalo de nuevo."
     else:
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm
-        })
+        form = AuthenticationForm()
+
+    return render(request, 'signin.html', {
+        'form': form,
+        'error_message': error_message if 'error_message' in locals() else None
+    })
 
 # REGISTRO SITE;
 
