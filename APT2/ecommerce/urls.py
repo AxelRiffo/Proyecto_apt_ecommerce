@@ -34,7 +34,9 @@ urlpatterns = [
     path('restar/<int:producto_id>/', restar_producto, name="Sub"),
     path('limpiar/', limpiar_carrito, name="CLS"),
     path('registro/', views.registro, name="registro"), 
-    path('load-data/', views.load_data, name='load_data'),
+    
+    #url pa la carga de datos
+    #path('load-data/', views.load_data, name='load_data'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
