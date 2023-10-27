@@ -1,8 +1,7 @@
 from django.db import models
 from django.db.models import Min, Max
 from datetime import datetime
-from django.contrib.auth.models import AbstractUser, Group, Permission
-
+from django.contrib.auth.models import User
 # # REGION
 class region(models.Model):
        id_region = models.BigAutoField(primary_key=True)
@@ -32,3 +31,10 @@ class Producto(models.Model):
 
     def __str__(self):
         return f'{self.titulo} - Precio: ${self.precio}'
+    
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    rut = models.CharField(max_length=10)
+    comuna = models.ForeignKey(comuna, on_delete=models.SET_NULL, null=True)
+    def __str__(self):
+        return self.user.username

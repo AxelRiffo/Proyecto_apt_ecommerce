@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import comuna
+from .models import comuna, UserProfile
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -19,8 +19,9 @@ class CustomUserCreationForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
-        user.comuna = self.cleaned_data['comuna']  # Guarda la comuna en el usuario
-        user.rut = self.cleaned_data['rut'] 
         if commit:
             user.save()
+            profile = UserProfile(user=user, rut=self.cleaned_data['rut'], comuna=self.cleaned_data['comuna'])
+            profile.save()
         return user
+
