@@ -18,7 +18,7 @@
 
 /* Estilo para los encabezados de la tabla */
 .table th {
-    background-color: #8f0000;/* Fondo dorado */
+    background-color: #680200;/* Fondo dorado */
     color: #fff; /* Texto blanco */
     font-weight: bold; /* Texto en negrita */
 }
@@ -47,12 +47,12 @@
 #total_carrito {
     font-size: 20px; /* Tamaño del texto */
     font-weight: bold; /* Texto en negrita */
-    background-color: #8f0000;/* Color dorado */
+    background-color: #680200;/* Color dorado */
 }
 
 /* Estilo para la alerta "Sin Productos" */
 .alert-danger {
-    background-color: #8f0000; /* Fondo rojo */
+    background-color: #680200; /* Fondo rojo */
     color: #fff; /* Texto blanco */
     font-size: 18px; /* Tamaño del texto */
     padding: 10px; /* Espaciado interior */

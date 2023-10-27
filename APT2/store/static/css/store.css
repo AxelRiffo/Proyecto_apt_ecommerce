@@ -59,7 +59,7 @@
 #boton-precio {
   display: block;
   margin-bottom: 10px;
-  background-color: #8f0000; /* Color de fondo del botón */
+  background-color: #680200; /* Color de fondo del botón */
   color: white; /* Color del texto del botón */
   padding: 10px 20px; /* Ajusta el relleno según tus preferencias */
   border-radius: 10px; /* Bordes redondeados */
@@ -137,7 +137,7 @@
 
 .headercard {
   border-radius: 10px;
-  background: #510000;
+  background: #680200;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.90), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -217,7 +217,7 @@
 
 ul.pedido {
   list-style-type: none;
-  background-color: #510000;
+  background-color: #680200;
   padding: 10px;
   border: 1px solid #000000;
   border-radius: 5px;
@@ -235,7 +235,7 @@ li.pedido-item {
 
 /* Estilo para los elementos de título y el fondo de la lista */
 .pedido {
-  background-color: #510000;
+  background-color: #680200;
   padding: 10px;
   border: 1px solid #000000;
   border-radius: 5px;
