@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.db import IntegrityError
-from .models import Producto
+from .models import Producto, provincia, region, comuna
 from .Carrito import Carrito
 
 # DETALLES FUNCIONALES EN EL SISTEMA
@@ -110,3 +110,26 @@ def registro(request):
             messages.success(request, "te has registrado correctamente")
         return redirect('login')
     return render(request, 'registration/registro.html', dato)
+
+
+
+
+# ta comentado pq sirve pa cargar grandes cantidades de datos al ingresar a esa url
+
+#from django.http import HttpResponse
+#import csv
+#def load_data(request):
+#        reader = csv.reader(f)
+#        next(reader)  # Saltar el encabezado
+#       for row in reader:
+#            if len(row) >= 3:  # Asegurarse de que hay al menos 3 columnas
+#                # Asume que el nombre de la comuna está en la primera columna
+#                # el id de la comuna está en la segunda columna
+#                # y el id de la provincia está en la tercera columna
+#                nombre = row[0]
+#                id = row[1]
+#                provincia_id = row[2]
+#                if provincia_id:  # Verificar que provincia_id no esté vacío
+#                    provincia_obj = provincia.objects.get(id_provincia=provincia_id)
+#                    comuna.objects.create(id_comuna=id, nombre_comuna=nombre, id_provincia=provincia_obj)  
+#    return HttpResponse("Datos cargados con éxito")

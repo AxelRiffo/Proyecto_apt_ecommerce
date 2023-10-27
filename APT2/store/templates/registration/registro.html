@@ -3,21 +3,18 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css' %}" />
 
 <div class="body">
-    <h1>REGISTRO</h1>
-
-    <div style="width:100%; display:flex; justify-content:center; margin:5px;">
-
-        <main class="form-signin w-100 " style="margin-left: 30%;margin-right: 30%;">
+    <div class="column">
+        <h1>REGISTRO</h1>
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form | crispy}}
                 <input type="submit" value="Enviar">
+                <ul class="errorlist">
+                </ul>
             </form>
-        </main>
-
     </div>
 </div>
 {% endblock %}
