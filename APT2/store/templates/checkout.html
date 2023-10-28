@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}" />
+
+  <div class="body">
+    <div class="main-content">
+      <form method="post" class="checkout-form">
+        {% csrf_token %}
+        <div class="delivery">
+          {% if user.is_authenticated %}
+            <h3>Selecciona el método de entrega:</h3>
+            <div class="delivery-options">
+              <label><input type="radio" name="delivery_method" value="delivery" />Delivery</label>
+              <label><input type="radio" name="delivery_method" value="local_pickup" />Retiro en local</label>
+            </div>
+
+            <div id="delivery-details" class="delivery-details">
+              <select id="comuna" name="comuna">
+                <option value="comuna1">Comuna 1</option>
+                <option value="comuna2">Comuna 2</option>
+              </select>
+              <label for="address">Dirección:</label>
+              <input type="text" id="address" name="address" />
+            </div>
+
+            <div class="local-pickup-details">
+              <label for="phone">Número de teléfono:</label>
+              <input type="text" id="phone" name="phone" />
+            </div>
+          {% else %}
+            <p>Debes iniciar sesión para seleccionar el método de entrega.</p>
+          {% endif %}
+        </div>
+
+        <div class="payment-method">
+          <h3>Selecciona el método de pago:</h3>
+          <div class="payment-options">
+            <label><input type="radio" name="payment_method" value="webpay" />WebPay</label>
+            <label><input type="radio" name="payment_method" value="cash" />En efectivo</label>
+          </div>
+        </div>
+
+        <button class="btn">Continuar</button>
+      </form>
+    </div>
+    <div class="info-sidebar">
+      <!-- Aquí tenemos que mostrar el resumen del carrito, tipo las pizzas y su precio, para hacer la suma total si se agrega el tema de delivery -->
+        <h3>RESUMEN</h3>
+    
+    </div>
+  </div>
+
+  <script src="{% static 'js/checkout.js' %}"></script>
+{% endblock %}

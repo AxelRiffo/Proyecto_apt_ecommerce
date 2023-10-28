@@ -33,9 +33,7 @@ urlpatterns = [
     path('eliminar/<int:producto_id>/', eliminar_producto, name="Del"),
     path('restar/<int:producto_id>/', restar_producto, name="Sub"),
     path('limpiar/', limpiar_carrito, name="CLS"),
-    
-    #url pa la carga de datos
-    #path('load-data/', views.load_data, name='load_data'),
+    path('checkout/', views.checkout, name="CheckOut")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

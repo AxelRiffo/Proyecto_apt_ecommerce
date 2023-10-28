@@ -22,7 +22,7 @@
           {% if request.session.carrito.items %}
               {% for key, value in request.session.carrito.items %}
               <tr>
-                  <td>{{value.nombre}}</td>
+                  <td>Pizza {{value.nombre}}</td>
                   <td>${{value.acumulado}}</td>
                   <td>
                     <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-danger btn-increment">-</a>
@@ -49,5 +49,5 @@
 </div>
 <div class="row text-center">
   <div class="col-6"><a href="{% url 'CLS' %}" class="btn btn-danger">Limpiar carrito</a></div>
-  <div class="col-6"><a href="#" class="btn btn-success">Proceder al pago</a></div>
+  <div class="col-6"><a href="/checkout/" class="btn btn-success">Proceder al pago</a></div>
 </div>

@@ -1,0 +1,58 @@
+.body {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.80);
+    border-radius: 20px;
+    padding: 2em;
+    text-align: center;
+}
+
+.main-content {
+    flex: 2;
+    padding: 0 20px;
+}
+
+.info-sidebar {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.delivery {
+    display: grid;
+    background-color: white;
+    padding: 2em;
+    border-radius: 20px;
+}
+
+.delivery-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delivery-options label {
+    flex: 1;
+    text-align: center;
+}
+
+.delivery-details {
+    display: none;
+}
+
+.payment-method {
+    display: grid;
+    background-color: white;
+    padding: 2em;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.payment-options {
+    display: flex;
+    margin-top: 20px;
+}
+
+.payment-options label {
+    flex: 1;
+    text-align: center;
+}
