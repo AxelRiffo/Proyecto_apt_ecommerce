@@ -8,34 +8,36 @@
       <form method="post" class="checkout-form">
         {% csrf_token %}
         <div class="delivery">
+          <h3>Selecciona el método de entrega:</h3>
+          <div class="delivery-options">
+            <label for="delivery_method_delivery"><input type="radio" name="delivery_method" id="delivery_method_delivery" value="delivery" />Delivery</label>
+            <label for="delivery_method_local_pickup"><input type="radio" name="delivery_method" id="delivery_method_local_pickup" value="local_pickup" />Retiro en local</label>
+          </div>
 
-            <h3>Selecciona el método de entrega:</h3>
-            <div class="delivery-options">
-              <label><input type="radio" name="delivery_method" value="delivery" />Delivery</label>
-              <label><input type="radio" name="delivery_method" value="local_pickup" />Retiro en local</label>
-            </div>
-
-            <div id="delivery-details" class="delivery-details">
-              <select id="comuna" name="comuna">
-                <option value="comuna1">Comuna 1</option>
-                <option value="comuna2">Comuna 2</option>
-              </select>
+          <div id="delivery-details" class="delivery-details">
+            <div class="delivery-info">
+              <div class="comuna">
+                <select id="comuna" name="comuna">
+                  <option value="comuna1">Comuna 1</option>
+                  <option value="comuna2">Comuna 2</option>
+                </select>
+              </div>
               <label for="address">Dirección:</label>
               <input type="text" id="address" name="address" />
             </div>
+          </div>
 
-            <div class="local-pickup-details">
-              <label for="phone">Número de teléfono:</label>
-              <input type="text" id="phone" name="phone" />
-            </div>
-
+          <div class="delivery-info">
+            <label for="phone">Número de teléfono:</label>
+            <input type="text" id="phone" name="phone" />
+          </div>
         </div>
 
-        <div class="payment-method">
+        <div class="payment">
           <h3>Selecciona el método de pago:</h3>
           <div class="payment-options">
-            <label><input type="radio" name="payment_method" value="webpay" />WebPay</label>
-            <label><input type="radio" name="payment_method" value="cash" />En efectivo</label>
+            <label for="payment-method-webpay"><input type="radio" name="payment_method" value="webpay" />WebPay</label>
+            <label for="payment-method-efectivo"><input type="radio" name="payment_method" value="cash" />En efectivo</label>
           </div>
         </div>
 
@@ -44,8 +46,7 @@
     </div>
     <div class="info-sidebar">
       <!-- Aquí tenemos que mostrar el resumen del carrito, tipo las pizzas y su precio, para hacer la suma total si se agrega el tema de delivery -->
-        <h3>RESUMEN</h3>
-    
+      <h3>RESUMEN</h3>
     </div>
   </div>
 

@@ -1,3 +1,4 @@
+/* Estilos existentes */
 .body {
     display: flex;
     background-color: rgba(255, 255, 255, 0.80);
@@ -19,7 +20,6 @@
 }
 
 .delivery {
-    display: grid;
     background-color: white;
     padding: 2em;
     border-radius: 20px;
@@ -27,32 +27,70 @@
 
 .delivery-options {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.delivery-options label {
-    flex: 1;
-    text-align: center;
-}
 
 .delivery-details {
     display: none;
 }
 
-.payment-method {
-    display: grid;
+.delivery-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery-info label, select, .comuna {
+    padding: 10px;
+}
+
+.delivery-options label {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    background-color: white;
+    border: 3px solid #ccc;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.delivery-options label input {
+    display: none;
+}
+
+.payment {
     background-color: white;
     padding: 2em;
     border-radius: 20px;
     margin-top: 20px;
+
 }
 
 .payment-options {
     display: flex;
-    margin-top: 20px;
+    justify-content: space-around;
 }
 
+
 .payment-options label {
-    flex: 1;
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    background-color: white;
+    border: 3px solid #ccc;
     text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0px;
+}
+
+.payment-options label input {
+    display: none;
 }
