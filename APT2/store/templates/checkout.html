@@ -8,7 +8,7 @@
       <form method="post" class="checkout-form">
         {% csrf_token %}
         <div class="delivery">
-          {% if user.is_authenticated %}
+
             <h3>Selecciona el método de entrega:</h3>
             <div class="delivery-options">
               <label><input type="radio" name="delivery_method" value="delivery" />Delivery</label>
@@ -28,9 +28,7 @@
               <label for="phone">Número de teléfono:</label>
               <input type="text" id="phone" name="phone" />
             </div>
-          {% else %}
-            <p>Debes iniciar sesión para seleccionar el método de entrega.</p>
-          {% endif %}
+
         </div>
 
         <div class="payment-method">
