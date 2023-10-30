@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.db import IntegrityError
@@ -80,14 +81,73 @@ def signout(request):
 
 
 def signin(request):
-    if request.method == 'GET':
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm
-        })
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('Cuenta')
+            else:
+                messages.error(request, "Las credenciales de inicio de sesión no son válidas.")
+        else:
+            messages.error(request, "Hubo un error en el formulario.")
     else:
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm
-        })
+        form = AuthenticationForm()
+    return render(request, 'signin.html', {'form': form})
+
 
 def checkout(request):
     return render(request, 'checkout.html')
+
+
+from django.contrib.auth import update_session_auth_hash
+from .forms import EditProfileForm
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+
+def cuenta(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
+            old_password = form.cleaned_data.get('old_password')
+            new_password = form.cleaned_data.get('new_password')
+
+            user = User.objects.get(username=request.user.username)
+
+            if username:
+                user.username = username
+            if email:
+                user.email = email
+            if old_password and new_password:
+                if not request.user.check_password(old_password):
+                    # Si la antigua contraseña no es correcta, devuelve un error
+                    return render(request, 'cuenta.html', {
+                        'form': form,
+                        'error': 'La antigua contraseña no es correcta.'
+                    })
+                else:
+                    user.set_password(new_password)
+
+            user.save()
+
+            # Actualiza la contraseña del usuario en la sesión actual
+            update_session_auth_hash(request, user)
+
+            return redirect('Cuenta')
+        else:
+            return render(request, 'cuenta.html', {
+                'form': form,
+                "error": form.errors
+            })
+    else:
+        form = EditProfileForm(initial={
+            'username': request.user.username,
+            'email': request.user.email,
+        })
+        return render(request, 'cuenta.html', {'form': form})

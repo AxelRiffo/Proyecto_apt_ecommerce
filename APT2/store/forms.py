@@ -22,4 +22,12 @@ class CustomUserCreationForm(UserCreationForm):
             profile = UserProfile(user=user)
             profile.save()
         return user
+    
+    
+from django import forms
 
+class EditProfileForm(forms.Form):
+    username = forms.CharField(required=False)
+    email = forms.EmailField(required=False)
+    old_password = forms.CharField(widget=forms.PasswordInput, required=False)
+    new_password = forms.CharField(widget=forms.PasswordInput, required=False)

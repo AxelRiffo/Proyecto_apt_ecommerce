@@ -164,21 +164,22 @@
   display: flex;
   width: 160px;
   padding: 10px 10px;
-  border: 2px solid #000;
-  background-color: #000;
+  border: 2px solid #680200;
+  background-color: #680200;
   cursor: pointer;
   outline: none;
   transition: all 400ms;
   margin-top: 25px;
   margin-bottom: 15px;
+  border-radius: 20px;
 
 
 }
 
 .btnshorario1:hover {
   background-color: transparent;
-  color: #000;
-  border: 2px solid #000;
+  color: #680200;
+  border: 2px solid #680200;
 }
 
 .tipografia {

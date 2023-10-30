@@ -13,8 +13,8 @@
           <div class="col-8">
             <br>
             <p class="perfilText"><strong>Nombre de usuario:</strong> {{ user.username }}</p>
-            <p class="perfilText"><strong>Nombre de usuario:</strong> {{ user.rut }}</p>
-            <p class="perfilText"><strong>Contraseña:</strong> **************** </p>
+            <p class="perfilText"><strong>Nombre y apellido:</strong> {{ user.first_name }} {{user.last_name}}</p>
+            <p class="perfilText"><strong>Email:</strong> {{user.email}} </p>
           </div>
         </div>
         <div class="col-md-3"></div>
@@ -74,29 +74,30 @@
 
 
 <!-- Modal para editar perfil-->
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel"
-  aria-hidden="true">
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title modal-reserva" id="modalLabel{{ solicitud.id }}">Editar informacion de {{user.username}}</h5>
+        <h5 class="modal-title modal-reserva" id="modalLabel{{ solicitud.id }}">Editar informacion de {{user.username}}
+        </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
         </button>
       </div>
       <div class="modal-body">
         <!-- Aquí puedes mostrar los detalles de la solicitud de forma detallada -->
-        <p class="modal-datos"><strong>Nombre de usuario:</strong> {{ user.username }}</p>
-        <p class="modal-datos"><strong>Contraseña: </strong> {{ user.password }}</p>
-        <p class="modal-datos"><strong>Confirmar contraseña: </strong> {{ user.password1 }}</p>
-
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-success">Aceptar</button>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-success">Aceptar</button>
       </div>
     </div>
   </div>
 </div>
+
 <script>
   // Activar el modal al hacer clic en el botón "ver detalles"
   $("#myModalBtn").click(function () {
