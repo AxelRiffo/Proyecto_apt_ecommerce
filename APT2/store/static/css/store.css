@@ -254,3 +254,75 @@ li.pedido-item {
   margin-left: 20px;
   color: #fffdfd;
 }
+/* Añade una fuente más formal para los títulos del modal */
+.modal-title {
+  font-family: Inter;
+  font-size: 30px;
+  color: #000000;
+  /* Color negro */
+  text-shadow: 2px 2px #FFFFFF;
+  /* Sombra blanca para dar profundidad */
+}
+
+/* Añade un fondo blanco para el modal */
+.modal-content {
+  background: #FFFFFF;
+  /* Fondo blanco */
+}
+
+/* Estilos para el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+/* Estilos para los campos del formulario */
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Estilos para las etiquetas del formulario */
+form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Estilos para el botón de envío del formulario */
+form button[type="submit"] {
+  background-color: #4CAF50;
+  /* Verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+  background-color: #45a049;
+  /* Un verde un poco más oscuro al pasar el ratón */
+}
+
+/* Estilos para el botón de cancelar del formulario */
+form button[type="button"] {
+  background-color: #f44336;
+  /* Rojo */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button[type="button"]:hover {
+  background-color: #d32f2f;
+  /* Un rojo un poco más oscuro al pasar el ratón */
+}

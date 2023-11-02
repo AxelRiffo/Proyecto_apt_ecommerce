@@ -24,7 +24,7 @@
     <button type="button" class="btnshorario1 tipografia" data-bs-toggle="modal" data-bs-target="#modal">
       Editar perfil
     </button>
-    
+
   </div><!-- card -->
 </div>
 
@@ -39,37 +39,37 @@
             <div class="headercard">
               <h2 class="tipografiatitle1">Historial de Pedidos</h2>
             </div><!-- card-header -->
-<ul class="pedido">
-  <li class="pedido-titulo tipografia">ID del pedido 819248129041</li>
-  <li class="pedido-item textPedido">Pizza: Pizza Napolitana</li>
-  <li class="pedido-item textPedido">Dirección: DASJKLSDA 123</li>
-  <li class="pedido-item textPedido">Fecha: 24-10-2023</li>
-  <li class="pedido-item textPedido">Teléfono: +569 12345678</li>
-  <li class="pedido-item textPedido">Tipo de Pago: Débito</li>
-</ul>
-<ul class="pedido">
-  <li class="pedido-titulo tipografia">ID del pedido 318731892</li>
-  <li class="pedido-item textPedido">Pizza: Pizza Pepperonni</li>
-  <li class="pedido-item textPedido">Dirección: San pablo 7316</li>
-  <li class="pedido-item textPedido">Fecha: 28-10-2023</li>
-  <li class="pedido-item textPedido">Teléfono: +569 12345678</li>
-  <li class="pedido-item textPedido">Tipo de Pago: Credito</li>
-</ul>
+            <ul class="pedido">
+              <li class="pedido-titulo tipografia">ID del pedido 819248129041</li>
+              <li class="pedido-item textPedido">Pizza: Pizza Napolitana</li>
+              <li class="pedido-item textPedido">Dirección: DASJKLSDA 123</li>
+              <li class="pedido-item textPedido">Fecha: 24-10-2023</li>
+              <li class="pedido-item textPedido">Teléfono: +569 12345678</li>
+              <li class="pedido-item textPedido">Tipo de Pago: Débito</li>
+            </ul>
+            <ul class="pedido">
+              <li class="pedido-titulo tipografia">ID del pedido 318731892</li>
+              <li class="pedido-item textPedido">Pizza: Pizza Pepperonni</li>
+              <li class="pedido-item textPedido">Dirección: San pablo 7316</li>
+              <li class="pedido-item textPedido">Fecha: 28-10-2023</li>
+              <li class="pedido-item textPedido">Teléfono: +569 12345678</li>
+              <li class="pedido-item textPedido">Tipo de Pago: Credito</li>
+            </ul>
 
 
-<!-- Seguimiento de Pedidos estaticos iwal q arriba -->
-<div class="headercard">
-  <h2 class="tipografiatitle1">Seguimiento de Pedidos</h2>
-</div><!-- card-header -->
-<p>Estado del pedido actual: Preparando su pizza</p>
-<p>Estimado de entrega: 15 minutos</p>
-</div>
-</div>
-<div class="col-md-3"></div>
-<div class="col-md-3"></div>
-</div><!-- row -->
-</div><!-- card-body -->
-</div><!-- card -->
+            <!-- Seguimiento de Pedidos estaticos iwal q arriba -->
+            <div class="headercard">
+              <h2 class="tipografiatitle1">Seguimiento de Pedidos</h2>
+            </div><!-- card-header -->
+            <p>Estado del pedido actual: Preparando su pizza</p>
+            <p>Estimado de entrega: 15 minutos</p>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+      </div><!-- row -->
+    </div><!-- card-body -->
+  </div><!-- card -->
 </div>
 
 
@@ -85,15 +85,21 @@
       </div>
       <div class="modal-body">
         <!-- Aquí puedes mostrar los detalles de la solicitud de forma detallada -->
-        <form method="post">
+        <form method="POST">
           {% csrf_token %}
           {{ form.as_p }}
-          <button type="submit" class="btn btn-success">Aceptar</button>
-        </form>
+          {% for field in form %}
+            {% for error in field.errors %}
+          <p style="color: red;">{{ error }}</p>
+            {% endfor %}
+          {% endfor %}
+
       </div>
       <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Aceptar</button>
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

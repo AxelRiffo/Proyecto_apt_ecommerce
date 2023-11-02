@@ -108,11 +108,13 @@ from .forms import EditProfileForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
+
 def cuenta(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST)
 
         if form.is_valid():
+            print(form.errors)
             username = form.cleaned_data.get('username')
             email = form.cleaned_data.get('email')
             old_password = form.cleaned_data.get('old_password')
@@ -126,11 +128,7 @@ def cuenta(request):
                 user.email = email
             if old_password and new_password:
                 if not request.user.check_password(old_password):
-                    # Si la antigua contraseña no es correcta, devuelve un error
-                    return render(request, 'cuenta.html', {
-                        'form': form,
-                        'error': 'La antigua contraseña no es correcta.'
-                    })
+                    form.add_error('old_password', 'La antigua contraseña no es correcta.')
                 else:
                     user.set_password(new_password)
 

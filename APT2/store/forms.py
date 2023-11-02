@@ -27,7 +27,15 @@ class CustomUserCreationForm(UserCreationForm):
 from django import forms
 
 class EditProfileForm(forms.Form):
-    username = forms.CharField(required=False)
-    email = forms.EmailField(required=False)
-    old_password = forms.CharField(widget=forms.PasswordInput, required=False)
-    new_password = forms.CharField(widget=forms.PasswordInput, required=False)
+    username = forms.CharField(label='Nombre de usuario:', required=False)
+    email = forms.EmailField(label='Correo electrónico:', required=False)
+    old_password = forms.CharField( 
+        label='Contraseña Antigua:',
+        widget=forms.PasswordInput, 
+        required=False,
+        error_messages={
+            'invalid': 'La antigua contraseña no es correcta.'
+        }
+    )
+    new_password = forms.CharField(label='Contraseña nueva:', widget=forms.PasswordInput, required=False)
+
