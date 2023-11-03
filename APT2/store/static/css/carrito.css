@@ -7,19 +7,18 @@
     font-size: 24px; /* Tamaño del texto */
     font-weight: bold; /* Texto en negrita */
     text-transform: uppercase; /* Texto en mayúsculas */
-    color: #ffcc00; /* Color dorado */
 }
 
 /* Estilo para la tabla */
 .table {
-    border: 2px solid black; /* Borde dorado */
+    border: 2px solid rgb(215, 215, 215); /* Borde dorado */
     margin-top: 20px; /* Espaciado superior */
 }
 
 /* Estilo para los encabezados de la tabla */
 .table th {
-    background-color: #680200;/* Fondo dorado */
-    color: #fff; /* Texto blanco */
+    background-color: white;/* Fondo dorado */
+    color: black; /* Texto blanco */
     font-weight: bold; /* Texto en negrita */
 }
 
@@ -27,13 +26,13 @@
 .btn-success, .btn-danger {
     font-size: 18px; /* Tamaño del texto */
     padding: 5px 10px; /* Espaciado interior */
-    border-radius: 50%; /* Bordes redondeados */
+    border-radius: 10px; /* Bordes redondeados */
     margin-left: 5px; /* Espaciado izquierdo */
 }
 
 /* Estilo para el botón "Limpiar" */
 .btn-danger {
-    background-color: #ff6f61; /* Fondo rojo */
+    background-color: #ff6f60; /* Fondo rojo */
     color: #fff; /* Texto blanco */
 }
 

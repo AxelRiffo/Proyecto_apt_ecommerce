@@ -13,7 +13,6 @@
 
 #loader-container img {
     width: 250px;
-    /* Tamaño de la imagen de carga */
 }
 
 
@@ -73,6 +72,12 @@ body {
     text-decoration: none;
     color: white;
     background-color: #680200;
+}
+
+#dropdown-menu {
+    position: absolute;
+    margin: 0px;
+    transform: translate3d(-20px, 66px, 0px);
 }
 
 #dropdown-button {

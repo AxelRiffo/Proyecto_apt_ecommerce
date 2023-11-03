@@ -38,10 +38,12 @@
 .delivery-info {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .delivery-info label, select, .comuna {
     padding: 10px;
+    margin: 0 auto;
 }
 
 .delivery-options label {
@@ -57,6 +59,10 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin: 5px;
+}
+
+label.selected {
+    background-color: rgb(225, 225, 225);
 }
 
 .delivery-options label input {
@@ -93,4 +99,15 @@
 
 .payment-options label input {
     display: none;
+}
+
+.button {
+    margin-top: 25px;
+    background-color: #0074d9;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
 }
