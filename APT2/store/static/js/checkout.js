@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateTotal(total) {
     const totalElement = document.querySelector('.total');
-    totalElement.textContent = `Total compra: $${total.toFixed(2)}`;
+    totalElement.textContent = `Total compra: $${total.toFixed(0)}`;
   }
 
   function addDeliveryRow(deliveryName, deliveryPrice) {

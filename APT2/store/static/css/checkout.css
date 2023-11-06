@@ -130,3 +130,11 @@ text-align: left;
 .acumulado {
     text-align: right!important;
 }
+
+.total{
+    background-color: #34db63;
+    color: white;
+    font-size: 24px;
+    border-radius: 5px;
+    margin-top: 50px;
+}
