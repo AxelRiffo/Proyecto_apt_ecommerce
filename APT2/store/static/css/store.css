@@ -67,6 +67,15 @@
   border: none;
 }
 
+.inicia-sesion {
+  display: block;
+  margin-bottom: 10px;
+  background-color: #ffd000;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: non;
+}
+
 /* Estilo para pantallas pequeñas */
 @media (max-width: 767px) {
   .card {
