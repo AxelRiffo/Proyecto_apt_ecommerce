@@ -116,3 +116,17 @@ select,
     cursor: pointer;
     font-size: 18px;
 }
+
+.resumen {
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+}
+
+.resumen td{
+text-align: left;
+}
+
+.acumulado {
+    text-align: right!important;
+}

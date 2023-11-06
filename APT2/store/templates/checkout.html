@@ -45,9 +45,21 @@
       </form>
     </div>
     <div class="info-sidebar">
-      <!-- Aquí tenemos que mostrar el resumen del carrito, tipo las pizzas y su precio, para hacer la suma total si se agrega el tema de delivery -->
       <h3>RESUMEN</h3>
-    </div>
+
+      <table id="resumen" class="resumen">
+        {% if request.session.carrito.items %}
+          {% for key, value in request.session.carrito.items %}
+          <tr>
+            <td>{{ value.cantidad }} Pizza {{ value.nombre }}</td> 
+            <td class="acumulado">${{ value.acumulado }}</td>
+          </tr>
+          {% endfor %}
+
+        {% endif %}        
+      </table>
+
+      <div class="total">Total compra: $</div>
   </div>
 
   <script src="{% static 'js/checkout.js' %}"></script>
