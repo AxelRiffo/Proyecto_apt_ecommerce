@@ -16,3 +16,25 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.user.username
+    
+class Order(models.Model):
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)  # UserProfile del usuario que realizó la compra
+    fecha_hora = models.DateTimeField(auto_now_add=True)  # Fecha y hora en que se realizó la compra
+    productos = models.ManyToManyField(Producto, through='OrderItem')  # Productos asociados a la orden
+    delivery_method = models.CharField(max_length=20)
+    comuna = models.CharField(max_length=50)
+    direccion = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=15)
+    payment_method = models.CharField(max_length=20)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f'Pedido #{self.id} - Usuario: {self.user_profile.user.username}'
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f'Pedido #{self.order.id} - Producto: {self.producto.titulo}'

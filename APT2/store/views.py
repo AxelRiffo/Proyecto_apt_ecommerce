@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
-from django.db import IntegrityError
-from .models import Producto
+from .models import Producto, Order, OrderItem
 from .Carrito import Carrito
 from django.contrib.auth import authenticate
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
 
 # DETALLES FUNCIONALES EN EL SISTEMA
 from django.contrib import messages
@@ -71,6 +72,7 @@ def signup(request):
                 "error": 'Hubo un error en el registro'
             })
 
+@login_required
 def cuenta(request):
     return render(request, 'cuenta.html')
 
@@ -98,17 +100,77 @@ def signin(request):
         form = AuthenticationForm()
     return render(request, 'signin.html', {'form': form})
 
+def calculate_total(order):
+    total = 0
+    order_items = OrderItem.objects.filter(order=order)
 
+    for item in order_items:
+        total += item.producto.precio * item.cantidad
+
+    # Agregar el costo de entrega, si corresponde
+    if order.delivery_method == 'delivery':
+        total += order.total
+
+    return total
+
+@login_required
 def checkout(request):
+    if request.method == 'POST':
+        # Obtener los datos del formulario de checkout
+        delivery_method = request.POST['delivery_method']
+        comuna = request.POST['comuna']
+        direccion = request.POST['direccion']
+        telefono = request.POST['telefono']
+        payment_method = request.POST['payment_method']
+        
+        # Crear una nueva instancia de Order
+        order = Order(
+            user_profile=request.user.userprofile,  # Asegúrate de que el usuario esté autenticado
+            delivery_method=delivery_method,
+            comuna=comuna,
+            direccion=direccion,
+            telefono=telefono,
+            payment_method=payment_method,
+            total=0,  # Debes calcular el total correctamente
+        )
+        order.save()
+
+        # Obtener los productos del carrito
+        carrito = Carrito(request)
+        for item in carrito:
+            producto = item['producto']
+            cantidad = item['cantidad']
+            # Crear una instancia de OrderItem
+            order_item = OrderItem(order=order, producto=producto, cantidad=cantidad)
+            order_item.save()
+        
+        # Calcula el total real y actualiza la orden
+        order.total = calculate_total(order)
+        order.save()
+
+        # Limpia el carrito
+        carrito.clear()
+
+        # Redirige a una página de confirmación u otra página
+        return HttpResponse('¡Orden creada exitosamente!')
+
     return render(request, 'checkout.html')
 
+
+
+
+
+
+
+
+# Ni perra idea de que es esto pero no lo voy a tocar :)
 
 from django.contrib.auth import update_session_auth_hash
 from .forms import EditProfileForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
-
+@login_required
 def cuenta(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST)

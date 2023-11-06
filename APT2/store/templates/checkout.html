@@ -5,7 +5,7 @@
 
   <div class="body">
     <div class="main-content">
-      <form method="post" class="checkout-form">
+      <form method="post" class="checkout-form" id="checkout-form">
         {% csrf_token %}
         <div class="delivery">
           <h3>Selecciona el método de entrega:</h3>
@@ -17,19 +17,21 @@
           <div id="delivery-details" class="delivery-details">
             <div class="delivery-info">
               <div class="comuna">
+                <label for="comuna">Comuna:</label>
                 <select id="comuna" name="comuna">
                   <option value="comuna1">Pudahuel</option>
-                  <option value="comuna2">Cerro navia</option>
+                  <option value="comuna2">Cerro Navia</option>
+                  <!-- Agrega más opciones de comuna si es necesario -->
                 </select>
               </div>
               <label for="address">Dirección:</label>
-              <input type="text" id="address" name="address" />
+              <input type="text" id="address" name="direccion" />
             </div>
           </div>
 
           <div class="delivery-info">
             <label for="phone">Número de teléfono:</label>
-            <input type="text" id="phone" name="phone" />
+            <input type="text" id="phone" name="telefono" />
           </div>
         </div>
 
@@ -38,11 +40,13 @@
           <div class="payment-options">
             <!-- EL INPUT DE WEBPAY ESTÁ DESHABILITADO HASTA LA IMPLEMENTACIÓN -->
             <label for="payment-method-webpay"><input disabled type="radio" name="payment_method" id="payment-method-webpay" value="webpay" />WebPay</label>
-            <label for="payment-method-efectivo"><input type="radio" name="payment_method" id="payment-method-efectivo" value="cash" />En efectivo</label>
+            <label for="payment-method-efectivo"><input type="radio" name="payment_method" id="payment-method-efectivo" value="efectivo" />En efectivo</label>
           </div>
         </div>
 
-        <button class="button">Continuar</button>
+        <input type="hidden" id="delivery_cost" name="delivery_cost" value="0">
+
+        <button class="button" type="button" id="checkout-button">Continuar</button>
       </form>
     </div>
     <div class="info-sidebar">
@@ -56,7 +60,6 @@
             <td class="acumulado">${{ value.acumulado }}</td>
           </tr>
           {% endfor %}
-
         {% endif %}        
       </table>
 
