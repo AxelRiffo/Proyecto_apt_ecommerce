@@ -6,7 +6,6 @@
 .text-center {
     font-size: 24px; /* Tamaño del texto */
     font-weight: bold; /* Texto en negrita */
-    text-transform: uppercase; /* Texto en mayúsculas */
 }
 
 /* Estilo para la tabla */
@@ -27,7 +26,7 @@
     font-size: 18px; /* Tamaño del texto */
     padding: 5px 10px; /* Espaciado interior */
     border-radius: 10px; /* Bordes redondeados */
-    margin-left: 5px; /* Espaciado izquierdo */
+    margin: 2px; /* Espaciado izquierdo */
 }
 
 /* Estilo para el botón "Limpiar" */
