@@ -1,82 +1,68 @@
-/* Estilo para el contenedor del carrito */
-
-
-
-/* Estilo para el título "CARRITO" */
 .text-center {
-    font-size: 24px; /* Tamaño del texto */
-    font-weight: bold; /* Texto en negrita */
+    font-size: 24px;
+    font-weight: bold;
 }
 
-/* Estilo para la tabla */
 .table {
-    border: 2px solid rgb(215, 215, 215); /* Borde dorado */
-    margin-top: 20px; /* Espaciado superior */
+    border: 2px solid rgb(215, 215, 215);
+    margin-top: 20px;
 }
 
-/* Estilo para los encabezados de la tabla */
 .table th {
-    background-color: white;/* Fondo dorado */
-    color: black; /* Texto blanco */
-    font-weight: bold; /* Texto en negrita */
+    background-color: white;
+    color: black;
+    font-weight: bold;
 }
 
-/* Estilo para los botones de "+" y "-" */
 .btn-success, .btn-danger {
-    font-size: 18px; /* Tamaño del texto */
-    padding: 5px 10px; /* Espaciado interior */
-    border-radius: 10px; /* Bordes redondeados */
-    margin: 2px; /* Espaciado izquierdo */
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 2px;
 }
 
-/* Estilo para el botón "Limpiar" */
 .btn-danger {
-    background-color: #ff6f60; /* Fondo rojo */
-    color: #fff; /* Texto blanco */
+    background-color: #ff6f60;
+    color: #fff;
 }
 
-/* Estilo para el botón "Guardar" */
 .btn-success {
-    background-color: #4caf50; /* Fondo verde */
-    color: #fff; /* Texto blanco */
+    background-color: #4caf50;
+    color: #fff;
 }
 
-/* Estilo para el total */
 #total_carrito {
-    font-size: 20px; /* Tamaño del texto */
-    font-weight: bold; /* Texto en negrita */
-    background-color: #680200;/* Color dorado */
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #680200;
 }
 
-/* Estilo para la alerta "Sin Productos" */
 .alert-danger {
-    background-color: #680200; /* Fondo rojo */
-    color: #fff; /* Texto blanco */
-    font-size: 18px; /* Tamaño del texto */
-    padding: 10px; /* Espaciado interior */
-    border-radius: 10px; /* Bordes redondeados */
+    background-color: #680200;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-/* Estilo para los botones + y - */
 .float-left {
     float: left;
-    margin-right: 5px; /* Ajusta el espacio entre el botón y la cantidad */
+    margin-right: 5px;
 }
 
 .float-right {
     float: right;
-    margin-left: 5px; /* Ajusta el espacio entre el botón y la cantidad */
+    margin-left: 5px;
 }
 
-/* Estilo para la cantidad */
 .quantity {
     display: inline-block;
-    width: 30px; /* Ajusta el ancho según tus necesidades */
+    width: 30px;
     text-align: center;
     font-weight: bold;
 }
 
 .btn-increment {
-    padding: 6px 6px; /* Ajusta el tamaño de relleno según tus preferencias */
-    font-size: 6px; /* Ajusta el tamaño de fuente según tus preferencias */
+    padding: 6px 6px;
+    font-size: 6px;
 }

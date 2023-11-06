@@ -132,9 +132,7 @@ body {
     width: 100%;
     justify-content: space-around;
     position: relative;
-    /* Agrega posición relativa para que el espacio inferior funcione */
     bottom: 0;
-    /* Alinea el pie de página en la parte inferior del contenedor */
     flex-shrink: 0;
 }
 

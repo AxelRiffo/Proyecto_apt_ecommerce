@@ -18,9 +18,9 @@ class UserProfile(models.Model):
         return self.user.username
     
 class Order(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)  # UserProfile del usuario que realizó la compra
-    fecha_hora = models.DateTimeField(auto_now_add=True)  # Fecha y hora en que se realizó la compra
-    productos = models.ManyToManyField(Producto, through='OrderItem')  # Productos asociados a la orden
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    fecha_hora = models.DateTimeField(auto_now_add=True)
+    productos = models.ManyToManyField(Producto, through='OrderItem')
     delivery_method = models.CharField(max_length=20)
     comuna = models.CharField(max_length=50)
     direccion = models.CharField(max_length=100)

@@ -4,11 +4,11 @@
     flex-direction: column;
     margin: 0;
     border-radius: 20px;
-    padding: 2em; /* Agrega un relleno para separar los elementos del borde */
+    padding: 2em;
 }
 
 .column {
-    margin: 0; /* Elimina el margen para que se ajuste al cuerpo del formulario */
+    margin: 0;
     flex: 1;
     padding: 1em;
     border-left: 5px solid #680200;
@@ -20,7 +20,7 @@
 .column button {
     margin-top: 1em;
     width: 100%;
-    background-color: #007bff; /* Cambia el color de fondo del botón */
+    background-color: #007bff;
     color: #fff;
     padding: 10px;
     border: none;
@@ -28,6 +28,5 @@
 }
 
 .footer {
-
-    bottom: 0; /* Alinea el pie de página en la parte inferior del contenedor */
+    bottom: 0;
 }

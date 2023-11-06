@@ -6,7 +6,7 @@
   <div class="perfil">
     <div class="headercard">
       <h2 class="tipografiatitle1">Datos del usuario {{ user.username }}</h2>
-    </div><!-- card-header -->
+    </div>
     <div class="card-body">
       <div class="row">
         <div class="col-md-6">
@@ -19,16 +19,15 @@
         </div>
         <div class="col-md-3"></div>
         <div class="col-md-3"></div>
-      </div><!-- row -->
-    </div><!-- card-body -->
+      </div>
+    </div>
     <button type="button" class="btnshorario1 tipografia" data-bs-toggle="modal" data-bs-target="#modal">
       Editar perfil
     </button>
 
-  </div><!-- card -->
+  </div>
 </div>
 
-<!-- Historial de Pedidos -->
 <div class="container">
   <div class="perfil">
     <div class="card-body">
@@ -38,7 +37,7 @@
             <br>
             <div class="headercard">
               <h2 class="tipografiatitle1">Historial de Pedidos</h2>
-            </div><!-- card-header -->
+            </div>
             <ul class="pedido">
               <li class="pedido-titulo tipografia">ID del pedido 819248129041</li>
               <li class="pedido-item textPedido">Pizza: Pizza Napolitana</li>
@@ -57,23 +56,20 @@
             </ul>
 
 
-            <!-- Seguimiento de Pedidos estaticos iwal q arriba -->
             <div class="headercard">
               <h2 class="tipografiatitle1">Seguimiento de Pedidos</h2>
-            </div><!-- card-header -->
+            </div>
             <p>Estado del pedido actual: Preparando su pizza</p>
             <p>Estimado de entrega: 15 minutos</p>
           </div>
         </div>
         <div class="col-md-3"></div>
         <div class="col-md-3"></div>
-      </div><!-- row -->
-    </div><!-- card-body -->
-  </div><!-- card -->
+      </div>
+    </div>
+  </div>
 </div>
 
-
-<!-- Modal para editar perfil-->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -84,7 +80,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- Aquí puedes mostrar los detalles de la solicitud de forma detallada -->
         <form method="POST">
           {% csrf_token %}
           {{ form.as_p }}
@@ -105,7 +100,6 @@
 </div>
 
 <script>
-  // Activar el modal al hacer clic en el botón "ver detalles"
   $("#myModalBtn").click(function () {
     $("#myModal").modal("show");
   });
