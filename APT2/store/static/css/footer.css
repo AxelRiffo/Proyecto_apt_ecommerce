@@ -1,38 +1,32 @@
+/* Estilos generales para el footer */
 .contenido {
     background-color: #680200;
+    color: #fff;
+    padding: 20px 0;
 }
 
 .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 100%;
     max-width: 1200px;
-    margin-bottom: 20px;
+    margin: 0 auto;
 }
 
 .footer-section {
     flex: 1;
     margin: 0 10px;
+    text-align: center;
 }
 
-.copyright {
-    position: relative;
-    bottom: 0;
-    right: 0;
-    color: #fff;
-    padding: 5px 10px;
-}
-
-
+/* Estilos para los enlaces y listas */
 .footer-section ul {
     list-style: none;
     padding: 0;
 }
 
 .footer-section ul li {
-    display: inline-block;
-    margin-right: 10px;
+    margin: 5px 0;
 }
 
 .footer-section ul li a {
@@ -40,10 +34,32 @@
     text-decoration: none;
 }
 
+/* Estilos para el párrafo de dirección */
 .footer-section p {
     margin: 0;
 }
 
-.footer {
-    flex-shrink: 0;
+/* Estilos para el pie de página y derechos de autor */
+.copyright {
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+    background-color: #680200;
+}
+
+/* Estilos para el encabezado del footer */
+.footer-section h4 {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+/* Estilos para los enlaces de redes sociales */
+.footer-section ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
 }
