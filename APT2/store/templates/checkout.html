@@ -2,6 +2,14 @@
 {% load static %}
 {% block content %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}" />
+  <link rel="stylesheet" href="{% static 'alertify.js/css/alertify.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'alertify.js/css/themes/default.min.css' %}" />
+
+  <script src="{% static 'alertify.js/alertify.min.js' %}"></script>
+
+
+  
+
 
   <div class="body">
     <div class="main-content">
@@ -45,7 +53,8 @@
 
         <input type="hidden" id="delivery_cost" name="delivery_cost" value="0">
 
-        <button class="btn" type="button" id="checkout-button">Continuar</button>
+        <button class="button" type="button" id="checkout-button">Continuar</button>
+
       </form>
     </div>
     <div class="info-sidebar">

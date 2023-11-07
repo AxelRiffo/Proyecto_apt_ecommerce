@@ -89,3 +89,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   updateDeliveryCost();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const checkoutButton = document.getElementById('checkout-button');
+  checkoutButton.addEventListener('click', function () {
+    const paymentMethodEfectivo = document.getElementById('payment-method-efectivo');
+    if (paymentMethodEfectivo.checked) {
+      alertify.alert('Proceso completado','Pedido realizado con éxito.', function () {
+        window.location.href = '/';
+      });
+    }
+  });
+});
+
+
