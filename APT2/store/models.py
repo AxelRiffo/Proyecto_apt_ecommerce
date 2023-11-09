@@ -18,6 +18,13 @@ class UserProfile(models.Model):
         return self.user.username
     
 class Order(models.Model):
+    STATUS_CHOICES = [
+        ('preparacion', 'Preparación'),
+        ('horno', 'Horno'),
+        ('despacho', 'Despacho'),
+        ('entregado', 'Entregado'),
+        ('finalizado', 'Finalizado'), 
+    ]
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     fecha_hora = models.DateTimeField(auto_now_add=True)
     productos = models.ManyToManyField(Producto, through='OrderItem')
@@ -27,7 +34,8 @@ class Order(models.Model):
     telefono = models.CharField(max_length=15)
     payment_method = models.CharField(max_length=20)
     total = models.DecimalField(max_digits=10, decimal_places=2)
-
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='preparacion')
+    tiempo_estimado = models.IntegerField(default=80)  # En minutos
     def __str__(self):
         return f'Pedido #{self.id} - Usuario: {self.user_profile.user.username}'
 

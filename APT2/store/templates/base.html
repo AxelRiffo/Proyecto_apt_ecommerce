@@ -45,6 +45,11 @@
                 <li>
                   <a class="dropdown-item" href="/cuenta/">Mi cuenta</a>
                 </li>
+                {% if user.is_staff %}
+                <li>
+                  <a class="dropdown-item" href="/order_dashboard/">Panel de Pedidos</a>
+                </li>
+                {% endif %}
                 <li>
                   <a class="dropdown-item" href="/logout/">Cerrar sesión</a>
                 </li>

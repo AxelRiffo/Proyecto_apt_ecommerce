@@ -35,9 +35,8 @@ urlpatterns = [
     path('limpiar/', limpiar_carrito, name="CLS"),
     path('checkout/', views.checkout, name="CheckOut"),
     path('order_dashboard/', views.order_dashboard, name='order_dashboard'),
-    path('pedido-create/', views.pedido_create, name='pedido-create'),
     path('pedido-update/<int:pk>/', views.pedido_update, name='pedido-update'),
-    path('pedido-delete/<int:pk>/', views.pedido_delete, name='pedido-delete'),
+    path('pedido-finalizado/<int:pk>/', views.pedido_finalizado, name='pedido-finalizado'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

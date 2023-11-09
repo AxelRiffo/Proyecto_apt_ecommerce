@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load humanize %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}" />
 <div class="container">
   <div class="perfil">
@@ -38,7 +39,7 @@
             <div class="headercard">
               <h2 class="tipografiatitle1">Historial de Pedidos</h2>
             </div>
-            {% for pedido in pedidos %}
+            {% for pedido in todos_pedidos %}
             <ul class="pedido">
               <li class="pedido-titulo tipografia">ID del pedido {{ pedido.id }}</li>
               <li class="pedido-item textPedido">Productos:</li>
@@ -54,8 +55,19 @@
             <div class="headercard">
               <h2 class="tipografiatitle1">Seguimiento de Pedidos</h2>
             </div>
-            <p>Estado del pedido actual: Preparando su pizza</p>
-            <p>Estimado de entrega: 15 minutos</p>
+            {% for pedido in pedidos_seguimiento %}
+            <ul class="pedido">
+              <li class="pedido-titulo tipografia">ID del pedido {{ pedido.id }}</li>
+              <li class="pedido-item textPedido">cantidad de productos:</li>
+              {% for item in pedido.productos.all %}
+              <li class="pedido-item textPedido">{{ item.cantidad }} x {{ item.titulo }}</li>
+              {% endfor %}
+              <li class="pedido-item textPedido">Precio: ${{ pedido.total|floatformat:"-2"|intcomma }}</li>
+              <li class="pedido-item textPedido">Dirección de entrega:{{ pedido.direccion }} </li>
+              <li class="pedido-item textPedido">Estado del pedido: El pedido se encuentra en {{pedido.status}} </li>
+              <li class="pedido-item textPedido">Tiempo de espera: El tiempo de espera aproximado es de {{pedido.tiempo_estimado}} min.</li>
+            </ul>
+            {% endfor %}
           </div>
         </div>
         <div class="col-md-3"></div>
@@ -79,9 +91,9 @@
           {% csrf_token %}
           {{ form.as_p }}
           {% for field in form %}
-            {% for error in field.errors %}
+          {% for error in field.errors %}
           <p style="color: red;">{{ error }}</p>
-            {% endfor %}
+          {% endfor %}
           {% endfor %}
 
       </div>

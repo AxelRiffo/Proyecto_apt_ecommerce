@@ -8,7 +8,7 @@ from django.contrib import messages
 from .models import Producto, Order, OrderItem
 from .Carrito import Carrito
 from django.urls import reverse
-
+from django.utils import timezone
 def store(request):
     productos = Producto.objects.all()
 
@@ -148,8 +148,10 @@ from django.contrib.auth.models import User
 
 @login_required
 def cuenta(request):
-    # Busca los pedidos del usuario actual
-    pedidos = Order.objects.filter(user_profile__user=request.user)
+    # Busca todos los pedidos del usuario actual
+    todos_pedidos = Order.objects.filter(user_profile__user=request.user)
+    # Busca solo los pedidos del usuario actual que no estén 'entregado' o 'finalizado'
+    pedidos_seguimiento = todos_pedidos.exclude(status__in=['entregado', 'finalizado'])
     if request.method == 'POST':
         form = EditProfileForm(request.POST)
 
@@ -180,35 +182,46 @@ def cuenta(request):
         else:
             return render(request, 'cuenta.html', {
                 'form': form,
-                "error": form.errors
+                "error": form.errors,
+                'todos_pedidos': todos_pedidos,
+                'pedidos_seguimiento': pedidos_seguimiento
             })
     else:
         form = EditProfileForm(initial={
             'username': request.user.username,
             'email': request.user.email,
         })
-        return render(request, 'cuenta.html',  {'form': form, 'pedidos': pedidos})
+        return render(request, 'cuenta.html',  {'form': form, 'todos_pedidos': todos_pedidos, 'pedidos_seguimiento': pedidos_seguimiento})
 
 def order_dashboard(request):
     pedidos = Order.objects.all()
     return render(request, 'panel.html', {'pedidos': pedidos})
 
-def pedido_create(request):
-    # Aquí deberías manejar la creación de un nuevo pedido.
-    # Esto podría implicar mostrar un formulario al usuario para que pueda ingresar los detalles del nuevo pedido,
-    # y luego guardar estos detalles en la base de datos.
-    # Por ahora, solo redirigiremos al usuario de vuelta al panel de control de pedidos.
-    return redirect('order_dashboard')
+from django.utils import timezone
 
 def pedido_update(request, pk):
     pedido = get_object_or_404(Order, pk=pk)
-    # Aquí deberías manejar la actualización del pedido.
-    # Esto podría implicar mostrar un formulario al usuario para que pueda editar los detalles del pedido,
-    # y luego guardar estos cambios en la base de datos.
-    # Por ahora, solo redirigiremos al usuario de vuelta al panel de control de pedidos.
+    # Cambia el estado del pedido al siguiente estado
+    if pedido.status == 'preparacion':
+        pedido.status = 'horno'
+        pedido.tiempo_estimado = 50  # Tiempo estimado para 'horno'
+    elif pedido.status == 'horno':
+        pedido.status = 'despacho'
+        pedido.tiempo_estimado = 20  # Tiempo estimado para 'despacho'
+    elif pedido.status == 'despacho':
+        pedido.status = 'entregado'
+        pedido.tiempo_estimado = 0   # No hay tiempo estimado para 'entregado'
+    pedido.save()
     return redirect('order_dashboard')
 
-def pedido_delete(request, pk):
+
+
+
+def pedido_finalizado(request, pk):
     pedido = get_object_or_404(Order, pk=pk)
-    pedido.delete()
+    # Cambia el estado del pedido a 'finalizado'
+    pedido.status = 'finalizado'
+    pedido.save()
     return redirect('order_dashboard')
+
+

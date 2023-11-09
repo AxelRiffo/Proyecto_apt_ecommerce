@@ -14,6 +14,8 @@
       <th>Método de Entrega</th>
       <th>Método de Pago</th>
       <th>Total</th>
+      <th>Estado del pedido</th>
+      <th>Tiempo de demora (min)</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -30,9 +32,11 @@
       <td>{{ pedido.delivery_method }}</td>
       <td>{{ pedido.payment_method }}</td>
       <td>${{ pedido.total|floatformat:"-2"|intcomma }}</td>
+      <td>{{ pedido.status }}</td>
+      <td>{{ pedido.tiempo_estimado }}</td>
       <td>
         <a href="{% url 'pedido-update' pedido.id %}">Actualizar</a>
-        <a href="{% url 'pedido-delete' pedido.id %}">Eliminar</a>
+        <a href="{% url 'pedido-finalizado' pedido.id %}">Finalizar</a>
       </td>
     </tr>
     {% empty %}
@@ -42,6 +46,4 @@
     {% endfor %}
   </tbody>
 </table>
-
-<a href="{% url 'pedido-create' %}">Crear nuevo pedido</a>
 {% endblock %}
