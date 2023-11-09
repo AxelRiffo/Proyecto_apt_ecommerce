@@ -38,24 +38,19 @@
             <div class="headercard">
               <h2 class="tipografiatitle1">Historial de Pedidos</h2>
             </div>
+            {% for pedido in pedidos %}
             <ul class="pedido">
-              <li class="pedido-titulo tipografia">ID del pedido 819248129041</li>
-              <li class="pedido-item textPedido">Pizza: Pizza Napolitana</li>
-              <li class="pedido-item textPedido">Dirección: DASJKLSDA 123</li>
-              <li class="pedido-item textPedido">Fecha: 24-10-2023</li>
-              <li class="pedido-item textPedido">Teléfono: +569 12345678</li>
-              <li class="pedido-item textPedido">Tipo de Pago: Débito</li>
+              <li class="pedido-titulo tipografia">ID del pedido {{ pedido.id }}</li>
+              <li class="pedido-item textPedido">Productos:</li>
+              {% for item in pedido.productos.all %}
+              <li class="pedido-item textPedido">{{ item.cantidad }} x {{ item.titulo }}</li>
+              {% endfor %}
+              <li class="pedido-item textPedido">Dirección: {{ pedido.direccion }}</li>
+              <li class="pedido-item textPedido">Fecha: {{ pedido.fecha_hora }}</li>
+              <li class="pedido-item textPedido">Teléfono: {{ pedido.telefono }}</li>
+              <li class="pedido-item textPedido">Tipo de Pago: {{ pedido.payment_method }}</li>
             </ul>
-            <ul class="pedido">
-              <li class="pedido-titulo tipografia">ID del pedido 318731892</li>
-              <li class="pedido-item textPedido">Pizza: Pizza Pepperonni</li>
-              <li class="pedido-item textPedido">Dirección: San pablo 7316</li>
-              <li class="pedido-item textPedido">Fecha: 28-10-2023</li>
-              <li class="pedido-item textPedido">Teléfono: +569 12345678</li>
-              <li class="pedido-item textPedido">Tipo de Pago: Credito</li>
-            </ul>
-
-
+            {% endfor %}
             <div class="headercard">
               <h2 class="tipografiatitle1">Seguimiento de Pedidos</h2>
             </div>

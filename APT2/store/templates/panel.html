@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load humanize %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/panel.css' %}" />
 <h1>Panel de Control de Pedidos</h1>
 
@@ -28,7 +29,7 @@
       </td>
       <td>{{ pedido.delivery_method }}</td>
       <td>{{ pedido.payment_method }}</td>
-      <td>{{ pedido.total }}</td>
+      <td>${{ pedido.total|floatformat:"-2"|intcomma }}</td>
       <td>
         <a href="{% url 'pedido-update' pedido.id %}">Actualizar</a>
         <a href="{% url 'pedido-delete' pedido.id %}">Eliminar</a>

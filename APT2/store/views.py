@@ -148,6 +148,8 @@ from django.contrib.auth.models import User
 
 @login_required
 def cuenta(request):
+    # Busca los pedidos del usuario actual
+    pedidos = Order.objects.filter(user_profile__user=request.user)
     if request.method == 'POST':
         form = EditProfileForm(request.POST)
 
@@ -185,19 +187,25 @@ def cuenta(request):
             'username': request.user.username,
             'email': request.user.email,
         })
-        return render(request, 'cuenta.html', {'form': form})
+        return render(request, 'cuenta.html',  {'form': form, 'pedidos': pedidos})
 
 def order_dashboard(request):
     pedidos = Order.objects.all()
     return render(request, 'panel.html', {'pedidos': pedidos})
 
 def pedido_create(request):
-    # debo implemntar la logic
+    # Aquí deberías manejar la creación de un nuevo pedido.
+    # Esto podría implicar mostrar un formulario al usuario para que pueda ingresar los detalles del nuevo pedido,
+    # y luego guardar estos detalles en la base de datos.
+    # Por ahora, solo redirigiremos al usuario de vuelta al panel de control de pedidos.
     return redirect('order_dashboard')
 
 def pedido_update(request, pk):
     pedido = get_object_or_404(Order, pk=pk)
-    # debo implentar la logic
+    # Aquí deberías manejar la actualización del pedido.
+    # Esto podría implicar mostrar un formulario al usuario para que pueda editar los detalles del pedido,
+    # y luego guardar estos cambios en la base de datos.
+    # Por ahora, solo redirigiremos al usuario de vuelta al panel de control de pedidos.
     return redirect('order_dashboard')
 
 def pedido_delete(request, pk):
