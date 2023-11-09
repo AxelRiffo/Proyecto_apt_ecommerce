@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Producto, Order, OrderItem
 from .Carrito import Carrito
+from django.urls import reverse
 
 def store(request):
     productos = Producto.objects.all()
@@ -185,3 +186,21 @@ def cuenta(request):
             'email': request.user.email,
         })
         return render(request, 'cuenta.html', {'form': form})
+
+def order_dashboard(request):
+    pedidos = Order.objects.all()
+    return render(request, 'panel.html', {'pedidos': pedidos})
+
+def pedido_create(request):
+    # debo implemntar la logic
+    return redirect('order_dashboard')
+
+def pedido_update(request, pk):
+    pedido = get_object_or_404(Order, pk=pk)
+    # debo implentar la logic
+    return redirect('order_dashboard')
+
+def pedido_delete(request, pk):
+    pedido = get_object_or_404(Order, pk=pk)
+    pedido.delete()
+    return redirect('order_dashboard')

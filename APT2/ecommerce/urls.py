@@ -34,6 +34,10 @@ urlpatterns = [
     path('restar/<int:producto_id>/', restar_producto, name="Sub"),
     path('limpiar/', limpiar_carrito, name="CLS"),
     path('checkout/', views.checkout, name="CheckOut"),
+    path('order_dashboard/', views.order_dashboard, name='order_dashboard'),
+    path('pedido-create/', views.pedido_create, name='pedido-create'),
+    path('pedido-update/<int:pk>/', views.pedido_update, name='pedido-update'),
+    path('pedido-delete/<int:pk>/', views.pedido_delete, name='pedido-delete'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
