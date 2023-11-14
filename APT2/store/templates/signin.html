@@ -1,19 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/signin.css' %}" />
 
-  <div class="body">
-    <div class="column">
-      <h1>INICIAR SESION</h1>
-      <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Ingresar</button>
-        {% if error_message %}
-          {{ error_message }}
-        {% endif %}
-      </form>
-    </div>
+<div class="body">
+  <div class="column">
+    <h1>Iniciar sesión</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="{{ form.username.id_for_label }}" class="form-label">Nombre de usuario:</label>
+        {{ form.username }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.password.id_for_label }}" class="form-label">Contraseña:</label>
+        {{ form.password }}
+      </div>
+      <button>Ingresar</button>
+      {% if error_message %}
+      {{ error_message }}
+      {% endif %}
+    </form>
   </div>
+</div>
 {% endblock %}

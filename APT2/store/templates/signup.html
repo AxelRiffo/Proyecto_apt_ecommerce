@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/ingreso.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/singup.css' %}" />
 
   <div class="body">
     <div class="column">
-      <h1>REGISTRO</h1>
+      <h1>Crear Cuenta</h1>
       <form method="post" class="signup-form">
         {% csrf_token %}
         <div class="form-group">
@@ -36,5 +36,7 @@
         {{ error }}
       </form>
     </div>
+    <div></div>
+    <div></div>
   </div>
 {% endblock %}
