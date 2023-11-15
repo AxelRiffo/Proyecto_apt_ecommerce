@@ -37,6 +37,7 @@ urlpatterns = [
     path('order_dashboard/', views.order_dashboard, name='order_dashboard'),
     path('pedido-update/<int:pk>/', views.pedido_update, name='pedido-update'),
     path('pedido-finalizado/<int:pk>/', views.pedido_finalizado, name='pedido-finalizado'),
+    path('aboutus/', views.aboutus, name="AboutUs"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

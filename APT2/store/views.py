@@ -9,6 +9,7 @@ from .models import Producto, Order, OrderItem
 from .Carrito import Carrito
 from django.urls import reverse
 from django.utils import timezone
+
 def store(request):
     productos = Producto.objects.all()
 
@@ -225,3 +226,5 @@ def pedido_finalizado(request, pk):
     return redirect('order_dashboard')
 
 
+def aboutus(request):
+    return render(request, 'aboutus.html')
