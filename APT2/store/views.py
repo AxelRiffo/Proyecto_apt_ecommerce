@@ -228,3 +228,16 @@ def pedido_finalizado(request, pk):
 
 def aboutus(request):
     return render(request, 'aboutus.html')
+
+from .forms import ContactoForm
+
+def contacto(request):
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('Contacto')  # Puedes redirigir a una página de éxito
+    else:
+        form = ContactoForm()
+
+    return render(request, 'contacto.html', {'form': form})

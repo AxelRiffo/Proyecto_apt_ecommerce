@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Min, Max
 from datetime import datetime
 from django.contrib.auth.models import User
+from star_ratings.models import Rating
 
 class Producto(models.Model):
     titulo = models.CharField(max_length=255)
@@ -46,3 +47,8 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f'Pedido #{self.order.id} - Producto: {self.producto.titulo}'
+
+class Contacto(models.Model):
+    correo = models.EmailField()
+    descripcion = models.TextField()
+    valoracion = Rating()

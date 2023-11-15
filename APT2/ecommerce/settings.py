@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'crispy_forms',
-    'django.contrib.humanize', #agregue esto pal intcomma del panel
+    'django.contrib.humanize',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [

@@ -39,3 +39,13 @@ class EditProfileForm(forms.Form):
     )
     new_password = forms.CharField(label='Contraseña nueva:', widget=forms.PasswordInput, required=False)
 
+from .models import Contacto
+from star_ratings.widgets import StarRating
+
+class ContactoForm(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = ['correo', 'descripcion', 'valoracion']
+        widgets = {
+        'valoracion': StarRating(),
+    }

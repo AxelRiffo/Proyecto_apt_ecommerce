@@ -38,6 +38,7 @@ urlpatterns = [
     path('pedido-update/<int:pk>/', views.pedido_update, name='pedido-update'),
     path('pedido-finalizado/<int:pk>/', views.pedido_finalizado, name='pedido-finalizado'),
     path('aboutus/', views.aboutus, name="AboutUs"),
+    path('contacto/', views.contacto, name="Contacto"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
