@@ -230,14 +230,17 @@ def aboutus(request):
     return render(request, 'aboutus.html')
 
 from .forms import ContactoForm
+from .models import Contacto
 
 def contacto(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('Contacto')  # Puedes redirigir a una página de éxito
+            return redirect('Contacto')
     else:
         form = ContactoForm()
 
-    return render(request, 'contacto.html', {'form': form})
+    comentarios = Contacto.objects.filter(mostrar_comentarios=True)
+
+    return render(request, 'contacto.html', {'form': form, 'comentarios': comentarios})

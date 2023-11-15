@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'store',
     'crispy_forms',
     'django.contrib.humanize',
-    'star_ratings',
 ]
 
 MIDDLEWARE = [

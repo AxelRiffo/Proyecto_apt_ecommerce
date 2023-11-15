@@ -2,11 +2,46 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/contacto.css' %}" />
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <div class="body">
+    <div class="comments-section">
+        <!-- Aquí puedes agregar lógica para mostrar los comentarios si se habilita desde el admin -->
+        {% if comentarios %}
+            <h2>Comentarios:</h2>
+            {% for comentario in comentarios %}
+                <div class="comment">
+                    <p>{{ comentario.descripcion }}</p>
+                    <p>{{ comentario.valoracion }} ⭐️</p>
+                    <!-- Otros campos del comentario si es necesario -->
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
     <form method="post" action="{% url 'Contacto' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Enviar</button>
+        <div class="form-section">
+            <label for="valoracion-id">Valoración:</label>
+            <div class="rating" id="rating">
+                <span class="star" data-value="1">☆</span>
+                <span class="star" data-value="2">☆</span>
+                <span class="star" data-value="3">☆</span>
+                <span class="star" data-value="4">☆</span>
+                <span class="star" data-value="5">☆</span>
+            </div>
+            {{ form.as_p }}
+            <button type="submit">Enviar</button>
+        </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.star').click(function () {
+            var value = $(this).data('value');
+            $('#valoracion-id').val(value);
+            $('.star').removeClass('selected');
+            $(this).prevAll().addBack().addClass('selected');
+        });
+    });
+</script>
 {% endblock %}

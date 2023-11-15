@@ -40,12 +40,17 @@ class EditProfileForm(forms.Form):
     new_password = forms.CharField(label='Contraseña nueva:', widget=forms.PasswordInput, required=False)
 
 from .models import Contacto
-from star_ratings.widgets import StarRating
 
 class ContactoForm(forms.ModelForm):
+    valoracion = forms.IntegerField(
+        widget=forms.HiddenInput(attrs={'id': 'valoracion-id'}),
+        required=False,
+        initial=0,  # Establecer el valor predeterminado en 0
+    )
+
     class Meta:
         model = Contacto
-        fields = ['correo', 'descripcion', 'valoracion']
+        fields = ['valoracion', 'correo', 'descripcion']
         widgets = {
-        'valoracion': StarRating(),
-    }
+            'mostrar_comentarios': forms.HiddenInput(),
+        }

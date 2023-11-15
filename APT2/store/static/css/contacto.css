@@ -9,12 +9,24 @@
     padding: 25px;
 }
 
-form {
-    max-width: 400px;
-    margin: auto;
+.comments-section {
+    width: 40%; /* Ajusta el ancho según sea necesario */
+    padding-right: 20px;
 }
 
-button {
+.comment {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form {
+    width: 60%; /* Ajusta el ancho según sea necesario */
+    max-width: 400px;
+}
+
+.button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
@@ -23,6 +35,21 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.button:hover {
     background-color: #45a049;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.star {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.selected {
+    color: gold;
 }
