@@ -7,14 +7,14 @@
     <div class="comments-section">
         <!-- Aquí puedes agregar lógica para mostrar los comentarios si se habilita desde el admin -->
         {% if comentarios %}
-            <h2>Comentarios:</h2>
-            {% for comentario in comentarios %}
-                <div class="comment">
-                    <p>{{ comentario.descripcion }}</p>
-                    <p>{{ comentario.valoracion }} ⭐️</p>
-                    <!-- Otros campos del comentario si es necesario -->
-                </div>
-            {% endfor %}
+        <h2>Comentarios:</h2>
+        {% for comentario in comentarios %}
+        <div class="comment">
+            <p>{{ comentario.descripcion }}</p>
+            <p>{{ comentario.valoracion }} ⭐️</p>
+            <!-- Otros campos del comentario si es necesario -->
+        </div>
+        {% endfor %}
         {% endif %}
     </div>
     <form method="post" action="{% url 'Contacto' %}">
@@ -28,10 +28,7 @@
                 <span class="star" data-value="4">☆</span>
                 <span class="star" data-value="5">☆</span>
             </div>
-            <label for="{{ form.correo.id_for_label }}">Correo:</label>
-            {{ form.correo }}
-            <label for="{{ form.descripcion.id_for_label }}">Descripción:</label>
-            {{ form.descripcion }}
+            {{ form.as_p }}
             <button type="submit">Enviar</button>
         </div>
     </form>
@@ -46,6 +43,5 @@
                 $(this).prevAll().addBack().text('★').addClass('selected');
             });
         });
-
 </script>
 {% endblock %}
