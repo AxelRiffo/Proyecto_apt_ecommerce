@@ -28,7 +28,10 @@
                 <span class="star" data-value="4">☆</span>
                 <span class="star" data-value="5">☆</span>
             </div>
-            {{ form.as_p }}
+            <label for="{{ form.correo.id_for_label }}">Correo:</label>
+            {{ form.correo }}
+            <label for="{{ form.descripcion.id_for_label }}">Descripción:</label>
+            {{ form.descripcion }}
             <button type="submit">Enviar</button>
         </div>
     </form>
@@ -36,12 +39,13 @@
 
 <script>
     $(document).ready(function () {
-        $('.star').click(function () {
-            var value = $(this).data('value');
-            $('#valoracion-id').val(value);
-            $('.star').removeClass('selected');
-            $(this).prevAll().addBack().addClass('selected');
+            $('.star').click(function () {
+                var value = $(this).data('value');
+                $('#valoracion-id').val(value);
+                $('.star').text('☆').removeClass('selected');
+                $(this).prevAll().addBack().text('★').addClass('selected');
+            });
         });
-    });
+
 </script>
 {% endblock %}
