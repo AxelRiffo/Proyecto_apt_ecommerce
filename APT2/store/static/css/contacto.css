@@ -1,12 +1,4 @@
-.body {
-    background-color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 2em;
-}
+
 
 .comments-section {
     width: 70%;
@@ -23,13 +15,23 @@
     padding: 10px;
     border-radius: 5px;
     background-color: white;
+    border: 2px solid #800000;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 2em;
 }
 
 .form-section {
     width: 90%;
     max-width: 400px;
     margin: 30px;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 0.8);
@@ -39,40 +41,64 @@
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
+    color: #333;
 }
 
 .form-section input {
     width: 100%;
-    padding: 7px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
 }
 
 .form-section button {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 15px;
+    padding: 15px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    font-size: 18px;
+    transition: 400ms;
+}
+
+.form-section button:hover {
+    background-color: #126915;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    font-size: 18px;
 }
 
 .rating {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .star {
     font-size: 30px;
     cursor: pointer;
-    color: #ccc;
-    /* Color de las estrellas cuando no están seleccionadas */
+    color: #262626;
 }
 
 .selected {
     color: gold;
-    /* Color de las estrellas cuando están seleccionadas */
+}
+
+.form-section textarea {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.466);
+}
+
+.form-section input,
+.form-section textarea {
+    border: 2px solid #800000;
+    /* Código de color hexadecimal para el color burdeo */
 }
