@@ -4,22 +4,22 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}" />
   <link rel="stylesheet" href="{% static 'alertify.js/css/alertify.min.css' %}" />
   <link rel="stylesheet" href="{% static 'alertify.js/css/themes/default.min.css' %}" />
-
   <script src="{% static 'alertify.js/alertify.min.js' %}"></script>
-
-
-  
-
 
   <div class="body">
     <div class="main-content">
       <form method="post" class="checkout-form" id="checkout-form">
         {% csrf_token %}
+
         <div class="delivery">
           <h3>Selecciona el método de entrega:</h3>
-          <div class="delivery-options">
-            <label for="delivery_method_delivery"><input type="radio" name="delivery_method" id="delivery_method_delivery" value="delivery" />Delivery</label>
-            <label for="delivery_method_local_pickup"><input type="radio" name="delivery_method" id="delivery_method_local_pickup" value="local_pickup" />Retiro en local</label>
+          <div class="delivery-options">  
+            <label for="delivery_method_delivery">
+              <input type="radio" name="delivery_method" id="delivery_method_delivery" value="delivery" />Delivery
+            </label>
+            <label for="delivery_method_local_pickup">
+              <input type="radio" name="delivery_method" id="delivery_method_local_pickup" value="local_pickup" />Retiro en local
+            </label>
           </div>
 
           <div id="delivery-details" class="delivery-details">
@@ -27,8 +27,8 @@
               <div class="comuna">
                 <label for="comuna">Comuna:</label>
                 <select id="comuna" name="comuna">
-                  <option value="comuna1">Pudahuel</option>
-                  <option value="comuna2">Cerro Navia</option>
+                  <option value="Pudahuel">Pudahuel</option>
+                  <option value="CerroNavia">Cerro Navia</option>
                 </select>
               </div>
               <label for="address">Dirección:</label>
@@ -45,21 +45,22 @@
         <div class="payment">
           <h3>Selecciona el método de pago:</h3>
           <div class="payment-options">
-            <!-- EL INPUT DE WEBPAY ESTÁ DESHABILITADO HASTA LA IMPLEMENTACIÓN -->
-            <label for="payment-method-webpay"><input disabled type="radio" name="payment_method" id="payment-method-webpay" value="webpay" />WebPay</label>
-            <label for="payment-method-efectivo"><input type="radio" name="payment_method" id="payment-method-efectivo" value="efectivo" />En efectivo</label>
+            <label for="payment-method-webpay">
+              <input disabled type="radio" name="payment_method" id="payment-method-webpay" value="webpay" />WebPay
+            </label>
+            <label for="payment-method-efectivo">
+              <input type="radio" name="payment_method" id="payment-method-efectivo" value="efectivo" />En efectivo
+            </label>
           </div>
         </div>
 
         <input type="hidden" id="delivery_cost" name="delivery_cost" value="0">
 
-        <button class="button" type="button" id="checkout-button">Continuar</button>
-
+        <button class="button" type="submit" id="checkout-button">Continuar</button>
       </form>
     </div>
     <div class="info-sidebar">
       <h3>RESUMEN</h3>
-
       <table id="resumen" class="resumen">
         {% if request.session.carrito.items %}
           {% for key, value in request.session.carrito.items %}
@@ -70,8 +71,8 @@
           {% endfor %}
         {% endif %}        
       </table>
-
       <div class="total">Total compra: $</div>
+    </div>
   </div>
 
   <script src="{% static 'js/checkout.js' %}"></script>

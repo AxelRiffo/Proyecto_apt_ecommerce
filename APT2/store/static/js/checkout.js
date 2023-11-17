@@ -95,11 +95,51 @@ document.addEventListener('DOMContentLoaded', function () {
   checkoutButton.addEventListener('click', function () {
     const paymentMethodEfectivo = document.getElementById('payment-method-efectivo');
     if (paymentMethodEfectivo.checked) {
-      alertify.alert('Proceso completado','Pedido realizado con éxito.', function () {
-        window.location.href = '/';
+      fetch('ruta/a/checkout/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCookie('csrftoken'),  // Asegúrate de tener la función getCookie
+        },
+        body: JSON.stringify({
+          delivery_method: getSelectedDeliveryMethod(),
+          comuna: getSelectedComuna(),
+          // ... (otros campos del formulario)
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alertify.alert('Proceso completado', 'Pedido realizado con éxito.', function () {
+            window.location.href = '{% url "Store" %}';
+          });
+        } else {
+          alert('Error al procesar el pedido.');  // Manejar errores si es necesario
+        }
+      })
+      .catch(error => {
+        console.error('Error en la solicitud:', error);
       });
     }
   });
+});
+
+function getSelectedDeliveryMethod() {
+  // Implementa la lógica para obtener el método de entrega seleccionado
+}
+
+function getSelectedComuna() {
+  // Implementa la lógica para obtener la comuna seleccionada
+}
+
+
+checkoutButton.addEventListener('click', function () {
+  const paymentMethodEfectivo = document.getElementById('payment-method-efectivo');
+  if (paymentMethodEfectivo.checked) {
+    alertify.alert('Proceso completado', 'Pedido realizado con éxito.', function () {
+      window.location.href = '{% url "Store" %}';
+    });
+  }
 });
 
 

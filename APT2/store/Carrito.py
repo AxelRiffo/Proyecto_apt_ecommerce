@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+from .models import Producto
 class Carrito:
     def __init__(self, request):
         self.request = request
@@ -9,6 +11,19 @@ class Carrito:
         else:
             self.carrito = carrito
 
+    def __iter__(self):
+        for item_id, item_data in self.carrito.items():
+            yield {
+                'producto': get_object_or_404(Producto, id=item_id),
+                'cantidad': item_data['cantidad'],
+            }
+
+    def __str__(self):
+        if self.user_profile and self.user_profile.user:
+            return f'Order #{self.id} - User: {self.user_profile.user.username}'
+        else:
+            return f'Order #{self.id} - User: User not available'
+    
     def agregar(self, producto):
         id = str(producto.id)
         if id not in self.carrito.keys():

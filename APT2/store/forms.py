@@ -54,3 +54,22 @@ class ContactoForm(forms.ModelForm):
         widgets = {
             'mostrar_comentarios': forms.HiddenInput(),
         }
+
+# En tu archivo forms.py
+from django import forms
+
+class CheckoutForm(forms.Form):
+    DELIVERY_CHOICES = [
+        ('delivery', 'Delivery'),
+        ('local_pickup', 'Retiro en local'),
+    ]
+    PAYMENT_CHOICES = [
+        ('webpay', 'WebPay'),
+        ('efectivo', 'En efectivo'),
+    ]
+
+    delivery_method = forms.ChoiceField(choices=DELIVERY_CHOICES, widget=forms.RadioSelect)
+    comuna = forms.ChoiceField(choices=[('Pudahuel', 'Pudahuel'), ('CerroNavia', 'Cerro Navia')], required=False)
+    direccion = forms.CharField(max_length=255, required=False)
+    telefono = forms.CharField(max_length=20, required=False)
+    payment_method = forms.ChoiceField(choices=PAYMENT_CHOICES, widget=forms.RadioSelect)

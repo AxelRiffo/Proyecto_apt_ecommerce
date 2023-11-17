@@ -9,6 +9,8 @@ from .models import Producto, Order, OrderItem
 from .Carrito import Carrito
 from django.urls import reverse
 from django.utils import timezone
+from .forms import CheckoutForm
+from django.http import JsonResponse
 
 def store(request):
     productos = Producto.objects.all()
@@ -113,35 +115,55 @@ def calculate_total(order):
 @login_required
 def checkout(request):
     if request.method == 'POST':
-        delivery_method = request.POST['delivery_method']
-        comuna = request.POST['comuna']
-        direccion = request.POST['direccion']
-        telefono = request.POST['telefono']
-        payment_method = request.POST['payment_method']
-        order = Order(
-            user_profile=request.user.userprofile,
-            delivery_method=delivery_method,
-            comuna=comuna,
-            direccion=direccion,
-            telefono=telefono,
-            payment_method=payment_method,
-            total=0,
-        )
-        order.save()
-        carrito = Carrito(request)
-        for item in carrito:
-            producto = item['producto']
-            cantidad = item['cantidad']
-            order_item = OrderItem(order=order, producto=producto, cantidad=cantidad)
-            order_item.save()        
-        order.total = calculate_total(order)
-        order.save()
-        carrito.clear()
-        return HttpResponse('¡Orden creada exitosamente!')
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            delivery_method = form.cleaned_data['delivery_method']
+            comuna = form.cleaned_data['comuna']
+            direccion = form.cleaned_data['direccion']
+            telefono = form.cleaned_data['telefono']
+            payment_method = form.cleaned_data['payment_method']
 
-    return render(request, 'checkout.html')
+            # Crear una nueva instancia de Order y asignar los valores
+            order = Order(
+                user_profile=request.user.userprofile if hasattr(request.user, 'userprofile') else None,
+                delivery_method=delivery_method,
+                comuna=comuna,
+                direccion=direccion,
+                telefono=telefono,
+                payment_method=payment_method,
+            )
+
+            # Guardar el acumulado del carrito como total de la orden
+            carrito = Carrito(request)
+            total_carrito = sum(int(item.get('acumulado', 0)) for item in carrito)
+            order.total = total_carrito if total_carrito > 0 else None
 
 
+
+            
+
+            # Guardar la orden en la base de datos antes de agregar los detalles de los productos
+            order.save()
+
+            # Ahora, debes agregar los detalles de los productos a través de OrderItem.
+            # Recorre los productos en el carrito y crea instancias de OrderItem para cada uno.
+            for item in carrito:
+                order_item = OrderItem(
+                    order=order,
+                    producto=item['producto'],
+                    cantidad=item['cantidad'],
+                )
+                order_item.save()
+
+            # Limpia el carrito después de guardar en la base de datos
+            carrito.limpiar()
+
+            # Devolver una respuesta exitosa utilizando JsonResponse
+            return JsonResponse({'success': True, 'message': 'Pedido realizado con éxito'})
+    else:
+        form = CheckoutForm()
+
+    return render(request, 'checkout.html', {'form': form})
 from django.contrib.auth import update_session_auth_hash
 from .forms import EditProfileForm
 from django.shortcuts import render, redirect

@@ -25,7 +25,7 @@ class Order(models.Model):
         ('entregado', 'Entregado'),
         ('finalizado', 'Finalizado'), 
     ]
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, blank=True)
     fecha_hora = models.DateTimeField(auto_now_add=True)
     productos = models.ManyToManyField(Producto, through='OrderItem')
     delivery_method = models.CharField(max_length=20)
@@ -33,11 +33,15 @@ class Order(models.Model):
     direccion = models.CharField(max_length=100)
     telefono = models.CharField(max_length=15)
     payment_method = models.CharField(max_length=20)
-    total = models.DecimalField(max_digits=10, decimal_places=2)
+    total = models.IntegerField(null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='preparacion')
     tiempo_estimado = models.IntegerField(default=80)  # En minutos
     def __str__(self):
-        return f'Pedido #{self.id} - Usuario: {self.user_profile.user.username}'
+        if self.user_profile is not None and self.user_profile.user is not None:
+            return f'Pedido #{self.id} - Usuario: {self.user_profile.user.username}'
+        else:
+            return f'Pedido #{self.id} - Usuario: Usuario no disponible'
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
