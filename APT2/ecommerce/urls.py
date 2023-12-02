@@ -39,6 +39,7 @@ urlpatterns = [
     path('pedido-finalizado/<int:pk>/', views.pedido_finalizado, name='pedido-finalizado'),
     path('aboutus/', views.aboutus, name="AboutUs"),
     path('contacto/', views.contacto, name="Contacto"),
+    path('procesar_pago/', views.procesar_pago, name='procesar_pago'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

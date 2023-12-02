@@ -132,14 +132,15 @@ function getSelectedComuna() {
   // Implementa la lógica para obtener la comuna seleccionada
 }
 
-
-checkoutButton.addEventListener('click', function () {
-  const paymentMethodEfectivo = document.getElementById('payment-method-efectivo');
-  if (paymentMethodEfectivo.checked) {
+document.getElementById('checkout-button').addEventListener('click', function (event) {
+  event.preventDefault();
+  var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+  if (paymentMethod === 'mercadopago') {
+    window.location.href = this.getAttribute('data-url');
+  } else if (paymentMethod === 'efectivo') {
     alertify.alert('Proceso completado', 'Pedido realizado con éxito.', function () {
       window.location.href = '{% url "Store" %}';
     });
   }
 });
-
 

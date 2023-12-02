@@ -5,13 +5,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Producto, Order, OrderItem
+from .models import Producto, Order, OrderItem,  UserProfile
 from .Carrito import Carrito
 from django.urls import reverse
 from django.utils import timezone
 from .forms import CheckoutForm
 from django.http import JsonResponse
-
+import mercadopago
+from django.conf import settings
 def store(request):
     productos = Producto.objects.all()
 
@@ -266,3 +267,77 @@ def contacto(request):
     comentarios = Contacto.objects.filter(mostrar_comentarios=True)
 
     return render(request, 'contacto.html', {'form': form, 'comentarios': comentarios})
+
+
+
+
+import mercadopago
+
+def procesar_pago(request):
+    sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
+    
+    # Obtén los productos del carrito
+    carrito = Carrito(request)
+    
+    # Crea una lista para almacenar los items del carrito
+    items = []
+    
+    # Recorre los productos en el carrito y agrega cada uno a la lista de items
+    for item in carrito:
+        items.append({
+            "title": item['producto'].titulo, 
+            "quantity": item['cantidad'],
+            "currency_id": "CLP", 
+            "unit_price": item['producto'].precio  
+        })
+    
+    preference = {
+        "items": items
+    }
+
+    preference_result = sdk.preference().create(preference)
+    # Obtener la URL de pago desde la respuesta
+    payment_url = preference_result['response']['sandbox_init_point']
+
+    # Redirigir al usuario a la URL de pago
+    return redirect(payment_url)
+
+
+import json
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def notification(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        if data['status'] == 'approved':
+            # haciendo q el pedido se guarde en la base del datos jeje
+            user_profile = UserProfile.objects.get(user__username=data['user'])
+            order = Order(
+                user_profile=user_profile,
+                delivery_method=data['delivery_method'],
+                comuna=data['comuna'],
+                direccion=data['direccion'],
+                telefono=data['telefono'],
+                payment_method=data['payment_method'],
+                total=data['total'],
+                status='preparacion',
+                tiempo_estimado=80
+            )
+            order.save()
+            for item in data['items']:
+                producto = Producto.objects.get(titulo=item['title'])
+                order_item = OrderItem(
+                    order=order,
+                    producto=producto,
+                    cantidad=item['quantity']
+                )
+                order_item.save()
+            return HttpResponse(status=200)
+        else:
+            return HttpResponse(status=405)
+    else:
+        return HttpResponse(status=405)
+
+

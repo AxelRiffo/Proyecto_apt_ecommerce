@@ -16,6 +16,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Application definition
+MERCADOPAGO_PUBLIC_KEY = 'TEST-576fae33-dda0-4dcb-ad0c-b5d6941fb4c5'
+MERCADOPAGO_ACCESS_TOKEN = 'TEST-6609449567558913-111723-36c4865e58594eff8aa16697a711bfe2-1554975630'
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 

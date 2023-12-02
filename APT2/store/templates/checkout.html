@@ -45,8 +45,8 @@
         <div class="payment">
           <h3>Selecciona el método de pago:</h3>
           <div class="payment-options">
-            <label for="payment-method-webpay">
-              <input disabled type="radio" name="payment_method" id="payment-method-webpay" value="webpay" />WebPay
+            <label for="payment-method-mercadopago">
+              <input type="radio" name="payment_method" id="payment-method-mercadopago" value="mercadopago" />Mercado Pago
             </label>
             <label for="payment-method-efectivo">
               <input type="radio" name="payment_method" id="payment-method-efectivo" value="efectivo" />En efectivo
@@ -56,7 +56,7 @@
 
         <input type="hidden" id="delivery_cost" name="delivery_cost" value="0">
 
-        <button class="button" type="submit" id="checkout-button">Continuar</button>
+        <button class="button" type="submit" id="checkout-button" data-url="{% url 'procesar_pago' %}">Continuar</button>
       </form>
     </div>
     <div class="info-sidebar">
@@ -76,4 +76,5 @@
   </div>
 
   <script src="{% static 'js/checkout.js' %}"></script>
+  
 {% endblock %}
