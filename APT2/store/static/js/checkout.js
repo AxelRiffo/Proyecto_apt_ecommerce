@@ -139,8 +139,109 @@ document.getElementById('checkout-button').addEventListener('click', function (e
     window.location.href = this.getAttribute('data-url');
   } else if (paymentMethod === 'efectivo') {
     alertify.alert('Proceso completado', 'Pedido realizado con éxito.', function () {
-      window.location.href = '{% url "Store" %}';
+      window.location.href = cuentaUrl;
     });
   }
 });
+
+
+//PAL MERCADO PAGO
+document.getElementById('checkout-button').addEventListener('click', function (event) {
+  event.preventDefault();
+  var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+  if (paymentMethod === 'mercadopago') {
+    fetch('/procesar_pago/', {  // Asegúrate de que esta es la ruta correcta a tu vista `procesar_pago`
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken'),  // Asegúrate de tener la función getCookie
+      },
+      body: JSON.stringify({
+        delivery_method: getSelectedDeliveryMethod(),
+        comuna: getSelectedComuna(),
+        direccion: getDireccion(),
+        telefono: getTelefono(),
+        payment_method: getPaymentMethod(),
+        total: getTotal(),
+        status: getStatus(),
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.success) {
+          window.location.href = data.payment_url;
+        } else {
+          console.error('Error al procesar el pedido:', data && data.error);
+          alert('Error al procesar el pedido.');
+        }
+      })
+      .catch(error => {
+        console.error('Error en la solicitud:', error);
+      });
+  } else if (paymentMethod === 'efectivo') {
+    alertify.alert('Proceso completado', 'Pedido realizado con éxito.', function () {
+      window.location.href = cuentaUrl;
+    });
+  }
+});
+
+function getSelectedDeliveryMethod() {
+  const selectedDeliveryMethod = document.querySelector('input[name="delivery_method"]:checked');
+  return selectedDeliveryMethod ? selectedDeliveryMethod.value : null;
+}
+
+function getSelectedComuna() {
+  const selectedComuna = document.getElementById('comuna');
+  return selectedComuna ? selectedComuna.value : null;
+}
+
+
+function getDireccion() {
+  return document.getElementById('address').value;
+}
+
+function getTelefono() {
+  return document.getElementById('phone').value;
+}
+
+function getPaymentMethod() {
+  return document.querySelector('input[name="payment_method"]:checked').value;
+}
+
+function getTotal() {
+  // Aquí necesitas implementar la lógica para calcular el total del pedido
+  // Esto dependerá de cómo estés manejando los precios y las cantidades en tu carrito de compras
+}
+
+function getStatus() {
+  return 'preparacion';
+}
+
+
+function getTotal() {
+  // Obtiene los items del carrito
+  var items = getCarritoItems();
+
+  // Calcula el total sumando el precio de cada item multiplicado por su cantidad
+  var total = items.reduce(function (sum, item) {
+    return sum + item.producto.precio * item.cantidad;
+  }, 0);
+
+  return total;
+}
+
+function getCarritoItems() {
+  // Obtiene los items del carrito del almacenamiento local
+  var carrito = JSON.parse(localStorage.getItem('carrito')) || {};
+
+  // Convierte los items del carrito en un array de objetos
+  var items = Object.keys(carrito).map(function (key) {
+    return {
+      producto: carrito[key]['producto'],
+      cantidad: carrito[key]['cantidad']
+    };
+  });
+
+  return items;
+}
 

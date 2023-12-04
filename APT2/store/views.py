@@ -115,6 +115,7 @@ def calculate_total(order):
 
 @login_required
 def checkout(request):
+    print(request.POST)  # Imprime los datos del formulario
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
@@ -165,6 +166,7 @@ def checkout(request):
         form = CheckoutForm()
 
     return render(request, 'checkout.html', {'form': form})
+
 from django.contrib.auth import update_session_auth_hash
 from .forms import EditProfileForm
 from django.shortcuts import render, redirect
@@ -272,7 +274,9 @@ def contacto(request):
 
 
 import mercadopago
-
+from django.http import JsonResponse, HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
+from .models import Order, OrderItem, Producto, UserProfile
 def procesar_pago(request):
     sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
     
@@ -295,49 +299,37 @@ def procesar_pago(request):
         "items": items
     }
 
+    # Crea una instancia de UserProfile o recupera la existente
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+
+    # Crea una instancia de Order y guárdala en la base de datos
+    order = Order.objects.create(
+        user_profile=user_profile,
+        delivery_method='metodo_de_entrega',  # Agrega tu lógica aquí
+        comuna='comuna',  # Agrega tu lógica aquí
+        direccion='direccion',  # Agrega tu lógica aquí
+        telefono='telefono',  # Agrega tu lógica aquí
+        payment_method='metodo_de_pago',  # Agrega tu lógica aquí
+        total=0,  # Agrega tu lógica aquí
+        status='preparacion'  # Agrega tu lógica aquí
+    )
+
+    # Agrega los productos a la orden
+    for item in carrito:
+        OrderItem.objects.create(
+            order=order,
+            producto=item['producto'],
+            cantidad=item['cantidad']
+        )
+
+    # Guarda la orden en la base de datos
+    order.save()
+
+    # Crea la preferencia de pago
     preference_result = sdk.preference().create(preference)
+    
     # Obtener la URL de pago desde la respuesta
     payment_url = preference_result['response']['sandbox_init_point']
 
     # Redirigir al usuario a la URL de pago
     return redirect(payment_url)
-
-
-import json
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-
-@csrf_exempt
-def notification(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        if data['status'] == 'approved':
-            # haciendo q el pedido se guarde en la base del datos jeje
-            user_profile = UserProfile.objects.get(user__username=data['user'])
-            order = Order(
-                user_profile=user_profile,
-                delivery_method=data['delivery_method'],
-                comuna=data['comuna'],
-                direccion=data['direccion'],
-                telefono=data['telefono'],
-                payment_method=data['payment_method'],
-                total=data['total'],
-                status='preparacion',
-                tiempo_estimado=80
-            )
-            order.save()
-            for item in data['items']:
-                producto = Producto.objects.get(titulo=item['title'])
-                order_item = OrderItem(
-                    order=order,
-                    producto=producto,
-                    cantidad=item['quantity']
-                )
-                order_item.save()
-            return HttpResponse(status=200)
-        else:
-            return HttpResponse(status=405)
-    else:
-        return HttpResponse(status=405)
-
-

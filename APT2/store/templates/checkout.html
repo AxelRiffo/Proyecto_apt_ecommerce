@@ -13,12 +13,13 @@
 
         <div class="delivery">
           <h3>Selecciona el método de entrega:</h3>
-          <div class="delivery-options">  
+          <div class="delivery-options">
             <label for="delivery_method_delivery">
-              <input type="radio" name="delivery_method" id="delivery_method_delivery" value="delivery" />Delivery
+              <input type="radio" name="delivery_method" id="delivery_method_delivery" value="delivery" required />Delivery
             </label>
             <label for="delivery_method_local_pickup">
-              <input type="radio" name="delivery_method" id="delivery_method_local_pickup" value="local_pickup" />Retiro en local
+              <input type="radio" name="delivery_method" id="delivery_method_local_pickup" value="local_pickup" required />Retiro
+              en local
             </label>
           </div>
 
@@ -75,6 +76,10 @@
     </div>
   </div>
 
-  <script src="{% static 'js/checkout.js' %}"></script>
   
+  <script src="{% static 'js/checkout.js' %}"></script>
+  <script type="text/javascript">
+    var cuentaUrl = "{% url 'Cuenta' %}";
+  </script>
+
 {% endblock %}
