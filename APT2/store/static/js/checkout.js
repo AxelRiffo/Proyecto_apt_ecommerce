@@ -98,13 +98,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   updateDeliveryCost();
 
+
+
   checkoutButton.addEventListener('click', function () {
     const paymentMethodEfectivo = document.getElementById('payment-method-efectivo');
     if (paymentMethodEfectivo.checked) {
-      const total = calculateTotal(document.querySelector('#resumen'), 0);
-
+      const total = parseInt(document.querySelector('#total_carrito').dataset.total, 10);
       // Envía el total al backend
-      fetch('ruta/a/checkout/', {
+      fetch('/checkout/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
