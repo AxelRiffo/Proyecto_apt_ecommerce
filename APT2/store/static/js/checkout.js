@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectedDeliveryMethod = document.querySelector('input[name="delivery_method"]:checked');
     const selectedComuna = comunaDropdown.value;
     const deliveryCosts = {
-      comuna1: 2000,
-      comuna2: 3000,
+      Pudahuel: 2000,
+      Cerronavia: 3000,
     };
 
     if (selectedDeliveryMethod && selectedComuna) {
