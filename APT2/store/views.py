@@ -140,10 +140,6 @@ def checkout(request):
             total_carrito = sum(int(item.get('acumulado', 0)) for item in carrito)
             order.total = total_carrito if total_carrito > 0 else None
 
-
-
-            
-
             # Guardar la orden en la base de datos antes de agregar los detalles de los productos
             order.save()
 
