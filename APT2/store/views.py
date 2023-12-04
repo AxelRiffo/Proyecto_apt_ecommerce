@@ -125,6 +125,8 @@ def checkout(request):
             telefono = form.cleaned_data['telefono']
             payment_method = form.cleaned_data['payment_method']
 
+
+            
             # Crear una nueva instancia de Order y asignar los valores
             order = Order(
                 user_profile=request.user.userprofile if hasattr(request.user, 'userprofile') else None,
@@ -133,6 +135,7 @@ def checkout(request):
                 direccion=direccion,
                 telefono=telefono,
                 payment_method=payment_method,
+                total=calculate_total
             )
 
             # Guardar el acumulado del carrito como total de la orden
@@ -156,8 +159,7 @@ def checkout(request):
             # Limpia el carrito después de guardar en la base de datos
             carrito.limpiar()
 
-            # Devolver una respuesta exitosa utilizando JsonResponse
-            return JsonResponse({'success': True, 'message': 'Pedido realizado con éxito'})
+
     else:
         form = CheckoutForm()
 

@@ -147,3 +147,18 @@ function getCookie(name) {
   const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return cookieValue ? cookieValue.pop() : null;
 }
+
+
+//STA WEEAAA SE DEBE JUNTAR CON LO DE ARIRBA WN
+document.getElementById('checkout-button').addEventListener('click', function (event) {
+  event.preventDefault();
+  var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+  if (paymentMethod === 'mercadopago') {
+    window.location.href = this.getAttribute('data-url');
+  } else if (paymentMethod === 'efectivo') {
+    alertify.alert('Proceso completado', 'Pedido realizado con éxito.', function () {
+      window.location.href = '{% url "Store" %}';
+    });
+  }
+});
+
