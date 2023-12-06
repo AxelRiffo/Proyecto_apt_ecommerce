@@ -64,7 +64,7 @@ class CheckoutForm(forms.Form):
         ('local_pickup', 'Retiro en local'),
     ]
     PAYMENT_CHOICES = [
-        ('webpay', 'WebPay'),
+        ('mercadopago', 'MercadoPago'),
         ('efectivo', 'En efectivo'),
     ]
 

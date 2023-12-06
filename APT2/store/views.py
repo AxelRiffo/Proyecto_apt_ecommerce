@@ -275,6 +275,8 @@ import mercadopago
 from django.http import JsonResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from .models import Order, OrderItem, Producto, UserProfile
+from django.http import JsonResponse
+
 def procesar_pago(request):
     sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
     
@@ -303,12 +305,12 @@ def procesar_pago(request):
     # Crea una instancia de Order y guárdala en la base de datos
     order = Order.objects.create(
         user_profile=user_profile,
-        delivery_method='metodo_de_entrega',  # Agrega tu lógica aquí
-        comuna='comuna',  # Agrega tu lógica aquí
-        direccion='direccion',  # Agrega tu lógica aquí
-        telefono='telefono',  # Agrega tu lógica aquí
-        payment_method='metodo_de_pago',  # Agrega tu lógica aquí
-        total=0,  # Agrega tu lógica aquí
+        delivery_method=('delivery'),  # Obtiene el método de entrega del POST request
+        comuna=('CerroNavia'),  # Obtiene la comuna del POST request
+        direccion=('Janequeo 6485'),  # Obtiene la dirección del POST request
+        telefono=('988460249'),  # Obtiene el teléfono del POST request
+        payment_method=('MercadoPago'),  # Obtiene el método de pago del POST request
+        total=('10000'),  # Obtiene el total del POST request
         status='preparacion'  # Agrega tu lógica aquí
     )
 
@@ -331,3 +333,4 @@ def procesar_pago(request):
 
     # Redirigir al usuario a la URL de pago
     return redirect(payment_url)
+

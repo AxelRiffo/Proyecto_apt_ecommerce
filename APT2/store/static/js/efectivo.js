@@ -100,10 +100,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
   checkoutButton.addEventListener('click', function () {
     const paymentMethodEfectivo = document.getElementById('payment-method-efectivo');
     if (paymentMethodEfectivo.checked) {
-      const total = parseInt(document.querySelector('#total_carrito').dataset.total, 10);
+      const total = calculateTotal(document.querySelector('#resumen'), 0);
+
       // Envía el total al backend
       fetch('/checkout/', {
         method: 'POST',
@@ -114,7 +116,8 @@ document.addEventListener('DOMContentLoaded', function () {
         body: JSON.stringify({
           delivery_method: getSelectedDeliveryMethod(),
           comuna: getSelectedComuna(),
-          total: total,
+          total: calculateTotal,
+          payment_method: paymentMethodEfectivo,
           // ... (otros campos del formulario)
         }),
       })
@@ -134,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+
   function getSelectedDeliveryMethod() {
     const selectedDeliveryMethod = document.querySelector('input[name="delivery_method"]:checked');
     return selectedDeliveryMethod ? selectedDeliveryMethod.value : null;
@@ -148,18 +152,4 @@ function getCookie(name) {
   const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return cookieValue ? cookieValue.pop() : null;
 }
-
-
-//STA WEEAAA SE DEBE JUNTAR CON LO DE ARIRBA WN
-document.getElementById('checkout-button').addEventListener('click', function (event) {
-  event.preventDefault();
-  var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-  if (paymentMethod === 'mercadopago') {
-    window.location.href = this.getAttribute('data-url');
-  } else if (paymentMethod === 'efectivo') {
-    alertify.alert('Proceso completado', 'Pedido realizado con éxito.', function () {
-      window.location.href = '{% url "Store" %}';
-    });
-  }
-});
 
