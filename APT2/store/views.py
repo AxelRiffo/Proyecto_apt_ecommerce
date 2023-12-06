@@ -157,7 +157,7 @@ def checkout(request):
                 order_item.save()
 
             # Limpia el carrito después de guardar en la base de datos
-            carrito.limpiar()
+            limpiar_carrito(request)
 
 
     else:
@@ -324,6 +324,7 @@ def procesar_pago(request):
 
     # Guarda la orden en la base de datos
     order.save()
+    carrito.limpiar()
 
     # Crea la preferencia de pago
     preference_result = sdk.preference().create(preference)

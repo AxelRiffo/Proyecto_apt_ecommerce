@@ -103,7 +103,10 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
         if (paymentMethod === 'mercadopago') {
-            window.location.href = this.getAttribute('data-url');
+            // Abre la página de pago de MercadoPago en una nueva pestaña
+            window.open(this.getAttribute('data-url'), '_blank');
+            // Redirige la pestaña actual a /cuenta/
+            window.location.href = '/cuenta/';
         }
     });
 
